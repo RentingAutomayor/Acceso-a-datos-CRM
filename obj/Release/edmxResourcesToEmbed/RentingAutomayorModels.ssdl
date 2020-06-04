@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDRAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ally">
+    <Key>
+      <PropertyRef Name="ally_document" />
+    </Key>
+    <Property Name="ally_document" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="kod_id" Type="int" />
+    <Property Name="ally_name" Type="varchar" MaxLength="100" />
+    <Property Name="ally_lastName" Type="varchar" MaxLength="100" />
+    <Property Name="ally_percentCommission" Type="float" />
+    <Property Name="ally_state" Type="bit" />
+    <Property Name="ally_registrationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="areas">
+    <Key>
+      <PropertyRef Name="area_id" />
+    </Key>
+    <Property Name="area_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="area_description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="bra_id" />
+    </Key>
+    <Property Name="bra_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bra_name" Type="varchar" MaxLength="150" />
+    <Property Name="bra_adress" Type="varchar" MaxLength="150" />
+    <Property Name="bra_phone" Type="varchar" MaxLength="15" />
+    <Property Name="bra_isMain" Type="bit" />
+    <Property Name="bra_state" Type="bit" />
+    <Property Name="cli_document" Type="varchar" MaxLength="15" />
+    <Property Name="ally_document" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Canal">
+    <Key>
+      <PropertyRef Name="cnl_id" />
+    </Key>
+    <Property Name="cnl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cnl_description" Type="varchar" MaxLength="150" />
+    <Property Name="cnl_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="cty_id" />
+    </Key>
+    <Property Name="cty_id" Type="int" Nullable="false" />
+    <Property Name="cty_name" Type="varchar" MaxLength="100" />
+    <Property Name="cty_state" Type="bit" />
+    <Property Name="dpt_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="cli_document" />
+    </Key>
+    <Property Name="cli_document" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="kod_id" Type="int" />
+    <Property Name="cli_name" Type="varchar" MaxLength="100" />
+    <Property Name="cli_lastName" Type="varchar" MaxLength="100" />
+    <Property Name="cli_phone" Type="varchar" MaxLength="15" />
+    <Property Name="cli_cellPhone" Type="varchar" MaxLength="15" />
+    <Property Name="cnl_id" Type="int" />
+    <Property Name="ea_id" Type="int" />
+    <Property Name="cty_id" Type="int" />
+    <Property Name="cli_state" Type="bit" />
+    <Property Name="cli_registrationDate" Type="datetime" />
+    <Property Name="cli_email" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDRA.dbo.Contact' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="cnt_id" />
+    </Key>
+    <Property Name="cnt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bra_id" Type="int" />
+    <Property Name="cnt_name" Type="varchar" MaxLength="30" />
+    <Property Name="cnt_lastName" Type="varchar" MaxLength="30" />
+    <Property Name="cnt_phone" Type="varchar" MaxLength="15" />
+    <Property Name="cnt_cellPhone" Type="varchar" MaxLength="15" />
+    <Property Name="cnt_email" Type="varchar" MaxLength="150" />
+    <Property Name="cnt_adress" Type="varchar" MaxLength="150" />
+    <Property Name="jtcl_id" Type="int" />
+    <Property Name="cnt_costCenter" Type="varchar" MaxLength="10" />
+    <Property Name="cty_id" Type="int" />
+    <Property Name="cnt_registrationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="ctry_id" />
+    </Key>
+    <Property Name="ctry_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ctry_name" Type="varchar" MaxLength="100" />
+    <Property Name="ctry_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="dpt_id" />
+    </Key>
+    <Property Name="dpt_id" Type="int" Nullable="false" />
+    <Property Name="dpt_name" Type="varchar" MaxLength="100" />
+    <Property Name="dpt_state" Type="bit" />
+    <Property Name="ctry_id" Type="int" />
+  </EntityType>
+  <EntityType Name="EconomicActivity">
+    <Key>
+      <PropertyRef Name="ea_id" />
+    </Key>
+    <Property Name="ea_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ea_state" Type="bit" />
+    <Property Name="ea_description" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="jobTitle">
+    <Key>
+      <PropertyRef Name="jt_id" />
+    </Key>
+    <Property Name="jt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jt_description" Type="varchar" MaxLength="50" />
+    <Property Name="area_id" Type="int" />
+  </EntityType>
+  <EntityType Name="JobTitlesClient">
+    <Key>
+      <PropertyRef Name="jtcl_id" />
+    </Key>
+    <Property Name="jtcl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jtcl_description" Type="varchar" MaxLength="150" />
+    <Property Name="jtcl_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="kindOfAlly">
+    <Key>
+      <PropertyRef Name="koa_id" />
+    </Key>
+    <Property Name="koa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="koa_description" Type="varchar" MaxLength="30" />
+    <Property Name="koa_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="kindOfDocument">
+    <Key>
+      <PropertyRef Name="kod_id" />
+    </Key>
+    <Property Name="kod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kod_description" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="modules">
+    <Key>
+      <PropertyRef Name="mdl_id" />
+    </Key>
+    <Property Name="mdl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mdl_name" Type="varchar" MaxLength="50" />
+    <Property Name="mdl_description" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="perm_id" />
+    </Key>
+    <Property Name="perm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="perm_name" Type="varchar" MaxLength="30" />
+    <Property Name="perm_description" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="permissionByModule">
+    <Key>
+      <PropertyRef Name="permByMdl_id" />
+    </Key>
+    <Property Name="permByMdl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="perm_id" Type="int" Nullable="false" />
+    <Property Name="mdl_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="permissionByRole">
+    <Key>
+      <PropertyRef Name="permByRol_id" />
+    </Key>
+    <Property Name="permByRol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="permByMdl_id" Type="int" Nullable="false" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="probability">
+    <Key>
+      <PropertyRef Name="prb_id" />
+    </Key>
+    <Property Name="prb_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prb_description" Type="varchar" MaxLength="30" />
+    <Property Name="prb_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="rqt_id" />
+    </Key>
+    <Property Name="rqt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rqt_registrationDate" Type="datetime" />
+    <Property Name="rqt_firstVisitDate" Type="datetime" />
+    <Property Name="rqt_lastVisitDate" Type="datetime" />
+    <Property Name="prb_id" Type="int" />
+    <Property Name="rqt_primaryState" Type="int" />
+    <Property Name="rqt_secondState" Type="int" />
+    <Property Name="cli_document" Type="varchar" MaxLength="15" />
+    <Property Name="usu_document" Type="varchar" MaxLength="30" />
+    <Property Name="rqt_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rol_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rol_description" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="states">
+    <Key>
+      <PropertyRef Name="sta_id" />
+    </Key>
+    <Property Name="sta_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sta_description" Type="varchar" MaxLength="100" />
+    <Property Name="sta_parentState" Type="int" />
+    <Property Name="sta_state" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="usu_document" />
+    </Key>
+    <Property Name="usu_document" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="kod_id" Type="int" />
+    <Property Name="usu_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_lastName" Type="varchar" MaxLength="50" />
+    <Property Name="usu_email" Type="varchar" MaxLength="100" />
+    <Property Name="usu_cellphone" Type="varchar" MaxLength="30" />
+    <Property Name="usu_adress" Type="varchar" MaxLength="155" />
+    <Property Name="cty_id" Type="int" />
+    <Property Name="jt_id" Type="int" />
+    <Property Name="rol_id" Type="int" />
+    <Property Name="usu_state" Type="bit" />
+    <Property Name="usu_registerDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__ally__kod_id__6442E2C9">
+    <End Role="kindOfDocument" Type="Self.kindOfDocument" Multiplicity="0..1" />
+    <End Role="ally" Type="Self.ally" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kindOfDocument">
+        <PropertyRef Name="kod_id" />
+      </Principal>
+      <Dependent Role="ally">
+        <PropertyRef Name="kod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__branch__ally_doc__69FBBC1F">
+    <End Role="ally" Type="Self.ally" Multiplicity="0..1" />
+    <End Role="branch" Type="Self.branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ally">
+        <PropertyRef Name="ally_document" />
+      </Principal>
+      <Dependent Role="branch">
+        <PropertyRef Name="ally_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__branch__cli_docu__690797E6">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="branch" Type="Self.branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="cli_document" />
+      </Principal>
+      <Dependent Role="branch">
+        <PropertyRef Name="cli_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cities__dpt_id__6D0D32F4">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="dpt_id" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="dpt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__cnl_id__245D67DE">
+    <End Role="Canal" Type="Self.Canal" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canal">
+        <PropertyRef Name="cnl_id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="cnl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__cty_id__236943A5">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="cty_id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="cty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__ea_id__25518C17">
+    <End Role="EconomicActivity" Type="Self.EconomicActivity" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EconomicActivity">
+        <PropertyRef Name="ea_id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="ea_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client__kod_id__22751F6C">
+    <End Role="kindOfDocument" Type="Self.kindOfDocument" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kindOfDocument">
+        <PropertyRef Name="kod_id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="kod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contact__bra_id__756D6ECB">
+    <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="bra_id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="bra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contact__cty_id__7755B73D">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="cty_id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="cty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contact__jtcl_id__76619304">
+    <End Role="JobTitlesClient" Type="Self.JobTitlesClient" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobTitlesClient">
+        <PropertyRef Name="jtcl_id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="jtcl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Departmen__ctry___693CA210">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="ctry_id" />
+      </Principal>
+      <Dependent Role="Departments">
+        <PropertyRef Name="ctry_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__mdl_i__45F365D3">
+    <End Role="modules" Type="Self.modules" Multiplicity="1" />
+    <End Role="permissionByModule" Type="Self.permissionByModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modules">
+        <PropertyRef Name="mdl_id" />
+      </Principal>
+      <Dependent Role="permissionByModule">
+        <PropertyRef Name="mdl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__perm___44FF419A">
+    <End Role="permission" Type="Self.permission" Multiplicity="1" />
+    <End Role="permissionByModule" Type="Self.permissionByModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permission">
+        <PropertyRef Name="perm_id" />
+      </Principal>
+      <Dependent Role="permissionByModule">
+        <PropertyRef Name="perm_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__permB__48CFD27E">
+    <End Role="permissionByModule" Type="Self.permissionByModule" Multiplicity="1" />
+    <End Role="permissionByRole" Type="Self.permissionByRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permissionByModule">
+        <PropertyRef Name="permByMdl_id" />
+      </Principal>
+      <Dependent Role="permissionByRole">
+        <PropertyRef Name="permByMdl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__rol_i__49C3F6B7">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="permissionByRole" Type="Self.permissionByRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="permissionByRole">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__cli_doc__540C7B00">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="cli_document" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="cli_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__prb_id__51300E55">
+    <End Role="probability" Type="Self.probability" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="probability">
+        <PropertyRef Name="prb_id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="prb_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__rqt_pri__5224328E">
+    <End Role="states" Type="Self.states" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="states">
+        <PropertyRef Name="sta_id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rqt_primaryState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__rqt_sec__531856C7">
+    <End Role="states" Type="Self.states" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="states">
+        <PropertyRef Name="sta_id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rqt_secondState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__usu_doc__55009F39">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usu_document" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="usu_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__states__sta_id__4C6B5938">
+    <End Role="states" Type="Self.states" Multiplicity="1" />
+    <End Role="states1" Type="Self.states" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="states">
+        <PropertyRef Name="sta_id" />
+      </Principal>
+      <Dependent Role="states1">
+        <PropertyRef Name="sta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__cty_id__70DDC3D8">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="cty_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="cty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__jt_id__71D1E811">
+    <End Role="jobTitle" Type="Self.jobTitle" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jobTitle">
+        <PropertyRef Name="jt_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="jt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__kod_id__72C60C4A">
+    <End Role="kindOfDocument" Type="Self.kindOfDocument" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kindOfDocument">
+        <PropertyRef Name="kod_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="kod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__rol_id__73BA3083">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_jobTitle_areas">
+    <End Role="areas" Type="Self.areas" Multiplicity="0..1" />
+    <End Role="jobTitle" Type="Self.jobTitle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="areas">
+        <PropertyRef Name="area_id" />
+      </Principal>
+      <Dependent Role="jobTitle">
+        <PropertyRef Name="area_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDRAModelStoreContainer">
+    <EntitySet Name="ally" EntityType="Self.ally" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="areas" EntityType="Self.areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Canal" EntityType="Self.Canal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EconomicActivity" EntityType="Self.EconomicActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jobTitle" EntityType="Self.jobTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobTitlesClient" EntityType="Self.JobTitlesClient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kindOfAlly" EntityType="Self.kindOfAlly" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kindOfDocument" EntityType="Self.kindOfDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="modules" EntityType="Self.modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permission" EntityType="Self.permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permissionByModule" EntityType="Self.permissionByModule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permissionByRole" EntityType="Self.permissionByRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="probability" EntityType="Self.probability" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="states" EntityType="Self.states" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Contact].[cnt_id] AS [cnt_id], 
+    [Contact].[bra_id] AS [bra_id], 
+    [Contact].[cnt_name] AS [cnt_name], 
+    [Contact].[cnt_lastName] AS [cnt_lastName], 
+    [Contact].[cnt_phone] AS [cnt_phone], 
+    [Contact].[cnt_cellPhone] AS [cnt_cellPhone], 
+    [Contact].[cnt_email] AS [cnt_email], 
+    [Contact].[cnt_adress] AS [cnt_adress], 
+    [Contact].[jtcl_id] AS [jtcl_id], 
+    [Contact].[cnt_costCenter] AS [cnt_costCenter], 
+    [Contact].[cty_id] AS [cty_id], 
+    [Contact].[cnt_registrationDate] AS [cnt_registrationDate]
+    FROM [dbo].[Contact] AS [Contact]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__ally__kod_id__6442E2C9" Association="Self.FK__ally__kod_id__6442E2C9">
+      <End Role="kindOfDocument" EntitySet="kindOfDocument" />
+      <End Role="ally" EntitySet="ally" />
+    </AssociationSet>
+    <AssociationSet Name="FK__branch__ally_doc__69FBBC1F" Association="Self.FK__branch__ally_doc__69FBBC1F">
+      <End Role="ally" EntitySet="ally" />
+      <End Role="branch" EntitySet="branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__branch__cli_docu__690797E6" Association="Self.FK__branch__cli_docu__690797E6">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="branch" EntitySet="branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cities__dpt_id__6D0D32F4" Association="Self.FK__Cities__dpt_id__6D0D32F4">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__cnl_id__245D67DE" Association="Self.FK__Client__cnl_id__245D67DE">
+      <End Role="Canal" EntitySet="Canal" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__cty_id__236943A5" Association="Self.FK__Client__cty_id__236943A5">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__ea_id__25518C17" Association="Self.FK__Client__ea_id__25518C17">
+      <End Role="EconomicActivity" EntitySet="EconomicActivity" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client__kod_id__22751F6C" Association="Self.FK__Client__kod_id__22751F6C">
+      <End Role="kindOfDocument" EntitySet="kindOfDocument" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contact__bra_id__756D6ECB" Association="Self.FK__Contact__bra_id__756D6ECB">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contact__cty_id__7755B73D" Association="Self.FK__Contact__cty_id__7755B73D">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contact__jtcl_id__76619304" Association="Self.FK__Contact__jtcl_id__76619304">
+      <End Role="JobTitlesClient" EntitySet="JobTitlesClient" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Departmen__ctry___693CA210" Association="Self.FK__Departmen__ctry___693CA210">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Departments" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__mdl_i__45F365D3" Association="Self.FK__Permissio__mdl_i__45F365D3">
+      <End Role="modules" EntitySet="modules" />
+      <End Role="permissionByModule" EntitySet="permissionByModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__perm___44FF419A" Association="Self.FK__Permissio__perm___44FF419A">
+      <End Role="permission" EntitySet="permission" />
+      <End Role="permissionByModule" EntitySet="permissionByModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__permB__48CFD27E" Association="Self.FK__Permissio__permB__48CFD27E">
+      <End Role="permissionByModule" EntitySet="permissionByModule" />
+      <End Role="permissionByRole" EntitySet="permissionByRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__rol_i__49C3F6B7" Association="Self.FK__Permissio__rol_i__49C3F6B7">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="permissionByRole" EntitySet="permissionByRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__cli_doc__540C7B00" Association="Self.FK__Request__cli_doc__540C7B00">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__prb_id__51300E55" Association="Self.FK__Request__prb_id__51300E55">
+      <End Role="probability" EntitySet="probability" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__rqt_pri__5224328E" Association="Self.FK__Request__rqt_pri__5224328E">
+      <End Role="states" EntitySet="states" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__rqt_sec__531856C7" Association="Self.FK__Request__rqt_sec__531856C7">
+      <End Role="states" EntitySet="states" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__usu_doc__55009F39" Association="Self.FK__Request__usu_doc__55009F39">
+      <End Role="users" EntitySet="users" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__states__sta_id__4C6B5938" Association="Self.FK__states__sta_id__4C6B5938">
+      <End Role="states" EntitySet="states" />
+      <End Role="states1" EntitySet="states" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__cty_id__70DDC3D8" Association="Self.FK__users__cty_id__70DDC3D8">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__jt_id__71D1E811" Association="Self.FK__users__jt_id__71D1E811">
+      <End Role="jobTitle" EntitySet="jobTitle" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__kod_id__72C60C4A" Association="Self.FK__users__kod_id__72C60C4A">
+      <End Role="kindOfDocument" EntitySet="kindOfDocument" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__rol_id__73BA3083" Association="Self.FK__users__rol_id__73BA3083">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_jobTitle_areas" Association="Self.FK_jobTitle_areas">
+      <End Role="areas" EntitySet="areas" />
+      <End Role="jobTitle" EntitySet="jobTitle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

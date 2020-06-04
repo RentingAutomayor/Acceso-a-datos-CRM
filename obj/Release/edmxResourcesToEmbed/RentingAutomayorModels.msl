@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDRAModelStoreContainer" CdmEntityContainer="BDRAEntities">
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="BDRAModel.areas">
+        <MappingFragment StoreEntitySet="areas">
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="area_description" ColumnName="area_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="BDRAModel.Cities">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="cty_name" ColumnName="cty_name" />
+          <ScalarProperty Name="cty_state" ColumnName="cty_state" />
+          <ScalarProperty Name="dpt_id" ColumnName="dpt_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="BDRAModel.Countries">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="ctry_id" ColumnName="ctry_id" />
+          <ScalarProperty Name="ctry_name" ColumnName="ctry_name" />
+          <ScalarProperty Name="ctry_state" ColumnName="ctry_state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="BDRAModel.Departments">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="dpt_id" ColumnName="dpt_id" />
+          <ScalarProperty Name="dpt_name" ColumnName="dpt_name" />
+          <ScalarProperty Name="dpt_state" ColumnName="dpt_state" />
+          <ScalarProperty Name="ctry_id" ColumnName="ctry_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobTitle">
+      <EntityTypeMapping TypeName="BDRAModel.jobTitle">
+        <MappingFragment StoreEntitySet="jobTitle">
+          <ScalarProperty Name="jt_id" ColumnName="jt_id" />
+          <ScalarProperty Name="jt_description" ColumnName="jt_description" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kindOfDocument">
+      <EntityTypeMapping TypeName="BDRAModel.kindOfDocument">
+        <MappingFragment StoreEntitySet="kindOfDocument">
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="kod_description" ColumnName="kod_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modules">
+      <EntityTypeMapping TypeName="BDRAModel.modules">
+        <MappingFragment StoreEntitySet="modules">
+          <ScalarProperty Name="mdl_id" ColumnName="mdl_id" />
+          <ScalarProperty Name="mdl_name" ColumnName="mdl_name" />
+          <ScalarProperty Name="mdl_description" ColumnName="mdl_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permission">
+      <EntityTypeMapping TypeName="BDRAModel.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+          <ScalarProperty Name="perm_name" ColumnName="perm_name" />
+          <ScalarProperty Name="perm_description" ColumnName="perm_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissionByModule">
+      <EntityTypeMapping TypeName="BDRAModel.permissionByModule">
+        <MappingFragment StoreEntitySet="permissionByModule">
+          <ScalarProperty Name="permByMdl_id" ColumnName="permByMdl_id" />
+          <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+          <ScalarProperty Name="mdl_id" ColumnName="mdl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissionByRole">
+      <EntityTypeMapping TypeName="BDRAModel.permissionByRole">
+        <MappingFragment StoreEntitySet="permissionByRole">
+          <ScalarProperty Name="permByRol_id" ColumnName="permByRol_id" />
+          <ScalarProperty Name="permByMdl_id" ColumnName="permByMdl_id" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="BDRAModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="rol_name" ColumnName="rol_name" />
+          <ScalarProperty Name="rol_description" ColumnName="rol_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BDRAModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="BDRAModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="usu_registerDate" ColumnName="usu_registerDate" />
+          <ScalarProperty Name="usu_document" ColumnName="usu_document" />
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="usu_name" ColumnName="usu_name" />
+          <ScalarProperty Name="usu_lastName" ColumnName="usu_lastName" />
+          <ScalarProperty Name="usu_email" ColumnName="usu_email" />
+          <ScalarProperty Name="usu_cellphone" ColumnName="usu_cellphone" />
+          <ScalarProperty Name="usu_adress" ColumnName="usu_adress" />
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="jt_id" ColumnName="jt_id" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="usu_state" ColumnName="usu_state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Canal">
+      <EntityTypeMapping TypeName="BDRAModel.Canal">
+        <MappingFragment StoreEntitySet="Canal">
+          <ScalarProperty Name="cnl_state" ColumnName="cnl_state" />
+          <ScalarProperty Name="cnl_description" ColumnName="cnl_description" />
+          <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="BDRAModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="cli_email" ColumnName="cli_email" />
+          <ScalarProperty Name="cli_registrationDate" ColumnName="cli_registrationDate" />
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="cli_state" ColumnName="cli_state" />
+          <ScalarProperty Name="ea_id" ColumnName="ea_id" />
+          <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
+          <ScalarProperty Name="cli_cellPhone" ColumnName="cli_cellPhone" />
+          <ScalarProperty Name="cli_phone" ColumnName="cli_phone" />
+          <ScalarProperty Name="cli_lastName" ColumnName="cli_lastName" />
+          <ScalarProperty Name="cli_name" ColumnName="cli_name" />
+          <ScalarProperty Name="cli_document" ColumnName="cli_document" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EconomicActivity">
+      <EntityTypeMapping TypeName="BDRAModel.EconomicActivity">
+        <MappingFragment StoreEntitySet="EconomicActivity">
+          <ScalarProperty Name="ea_description" ColumnName="ea_description" />
+          <ScalarProperty Name="ea_state" ColumnName="ea_state" />
+          <ScalarProperty Name="ea_id" ColumnName="ea_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTitlesClient">
+      <EntityTypeMapping TypeName="BDRAModel.JobTitlesClient">
+        <MappingFragment StoreEntitySet="JobTitlesClient">
+          <ScalarProperty Name="jtcl_state" ColumnName="jtcl_state" />
+          <ScalarProperty Name="jtcl_description" ColumnName="jtcl_description" />
+          <ScalarProperty Name="jtcl_id" ColumnName="jtcl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="BDRAModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="cnt_registrationDate" ColumnName="cnt_registrationDate" />
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="cnt_costCenter" ColumnName="cnt_costCenter" />
+          <ScalarProperty Name="bra_id" ColumnName="bra_id" />
+          <ScalarProperty Name="jtcl_id" ColumnName="jtcl_id" />
+          <ScalarProperty Name="cnt_adress" ColumnName="cnt_adress" />
+          <ScalarProperty Name="cnt_email" ColumnName="cnt_email" />
+          <ScalarProperty Name="cnt_cellPhone" ColumnName="cnt_cellPhone" />
+          <ScalarProperty Name="cnt_phone" ColumnName="cnt_phone" />
+          <ScalarProperty Name="cnt_lastName" ColumnName="cnt_lastName" />
+          <ScalarProperty Name="cnt_name" ColumnName="cnt_name" />
+          <ScalarProperty Name="cnt_id" ColumnName="cnt_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kindOfAlly">
+      <EntityTypeMapping TypeName="BDRAModel.kindOfAlly">
+        <MappingFragment StoreEntitySet="kindOfAlly">
+          <ScalarProperty Name="koa_state" ColumnName="koa_state" />
+          <ScalarProperty Name="koa_description" ColumnName="koa_description" />
+          <ScalarProperty Name="koa_id" ColumnName="koa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="probability">
+      <EntityTypeMapping TypeName="BDRAModel.probability">
+        <MappingFragment StoreEntitySet="probability">
+          <ScalarProperty Name="prb_state" ColumnName="prb_state" />
+          <ScalarProperty Name="prb_description" ColumnName="prb_description" />
+          <ScalarProperty Name="prb_id" ColumnName="prb_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="BDRAModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="rqt_state" ColumnName="rqt_state" />
+          <ScalarProperty Name="usu_document" ColumnName="usu_document" />
+          <ScalarProperty Name="cli_document" ColumnName="cli_document" />
+          <ScalarProperty Name="rqt_secondState" ColumnName="rqt_secondState" />
+          <ScalarProperty Name="rqt_primaryState" ColumnName="rqt_primaryState" />
+          <ScalarProperty Name="prb_id" ColumnName="prb_id" />
+          <ScalarProperty Name="rqt_lastVisitDate" ColumnName="rqt_lastVisitDate" />
+          <ScalarProperty Name="rqt_firstVisitDate" ColumnName="rqt_firstVisitDate" />
+          <ScalarProperty Name="rqt_registrationDate" ColumnName="rqt_registrationDate" />
+          <ScalarProperty Name="rqt_id" ColumnName="rqt_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="states">
+      <EntityTypeMapping TypeName="BDRAModel.states">
+        <MappingFragment StoreEntitySet="states">
+          <ScalarProperty Name="sta_state" ColumnName="sta_state" />
+          <ScalarProperty Name="sta_parentState" ColumnName="sta_parentState" />
+          <ScalarProperty Name="sta_description" ColumnName="sta_description" />
+          <ScalarProperty Name="sta_id" ColumnName="sta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ally">
+      <EntityTypeMapping TypeName="BDRAModel.ally">
+        <MappingFragment StoreEntitySet="ally">
+          <ScalarProperty Name="ally_registrationDate" ColumnName="ally_registrationDate" />
+          <ScalarProperty Name="ally_state" ColumnName="ally_state" />
+          <ScalarProperty Name="ally_percentCommission" ColumnName="ally_percentCommission" />
+          <ScalarProperty Name="ally_lastName" ColumnName="ally_lastName" />
+          <ScalarProperty Name="ally_name" ColumnName="ally_name" />
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="ally_document" ColumnName="ally_document" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="branch">
+      <EntityTypeMapping TypeName="BDRAModel.branch">
+        <MappingFragment StoreEntitySet="branch">
+          <ScalarProperty Name="ally_document" ColumnName="ally_document" />
+          <ScalarProperty Name="cli_document" ColumnName="cli_document" />
+          <ScalarProperty Name="bra_state" ColumnName="bra_state" />
+          <ScalarProperty Name="bra_isMain" ColumnName="bra_isMain" />
+          <ScalarProperty Name="bra_phone" ColumnName="bra_phone" />
+          <ScalarProperty Name="bra_adress" ColumnName="bra_adress" />
+          <ScalarProperty Name="bra_name" ColumnName="bra_name" />
+          <ScalarProperty Name="bra_id" ColumnName="bra_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

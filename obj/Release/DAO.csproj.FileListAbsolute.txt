@@ -1,0 +1,11 @@
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\DAO.dll.config
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\DAO.dll
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\DAO.pdb
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\EntityFramework.dll
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\EntityFramework.SqlServer.dll
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\EntityFramework.xml
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\bin\Release\EntityFramework.SqlServer.xml
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\obj\Release\DAO.csproj.CopyComplete
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\obj\Release\DAO.dll
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\obj\Release\DAO.pdb
+D:\Documentos\GitHub\Proyectos\API_RA_FORMS\DAO\obj\Release\DAO.csprojAssemblyReference.cache
