@@ -80,6 +80,9 @@
     <Compile Include="Canal.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CanalGroup.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="CashSpecialist.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
@@ -137,6 +140,12 @@
     <Compile Include="permissionByRole.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="PreClient.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PreRequest.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="probability.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
@@ -165,16 +174,46 @@
     <Compile Include="Segment.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_GET_CLIENT_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="stateGroup.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="states.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="STRPRCD_GET_ALL_REQUEST_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRCD_GET_REQUEST1_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRCD_GET_REQUEST_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GetConfigTemplateByPrefix_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GetFielsdByTemplate_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateField.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="userByRol.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="users.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleModel.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="VicePresident.cs">

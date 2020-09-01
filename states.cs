@@ -20,6 +20,7 @@ namespace DAO
             this.Request = new HashSet<Request>();
             this.Request1 = new HashSet<Request>();
             this.riskInformationByRequest = new HashSet<riskInformationByRequest>();
+            this.PreRequest = new HashSet<PreRequest>();
         }
     
         public int sta_id { get; set; }
@@ -37,5 +38,7 @@ namespace DAO
         public virtual stateGroup stateGroup { get; set; }
         public virtual states states1 { get; set; }
         public virtual states states2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PreRequest> PreRequest { get; set; }
     }
 }

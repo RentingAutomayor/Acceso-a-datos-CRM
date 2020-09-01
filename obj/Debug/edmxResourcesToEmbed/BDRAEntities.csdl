@@ -74,6 +74,10 @@
     <Property Name="cnl_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="cnl_state" Type="Boolean" />
     <NavigationProperty Name="Client" Relationship="Self.FK__Client__cnl_id__71D1E811" FromRole="Canal" ToRole="Client" />
+    <Property Name="cnlGrp_id" Type="Int32" />
+    <NavigationProperty Name="CanalGroup" Relationship="BDRAModel.FK_CANAL_CANALGROUP" FromRole="Canal" ToRole="CanalGroup" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK_FirstCanal_Canal" FromRole="Canal" ToRole="PreRequest" />
+    <NavigationProperty Name="PreRequest1" Relationship="BDRAModel.FK_SecondCanal_Canal" FromRole="Canal" ToRole="PreRequest" />
   </EntityType>
   <EntityType Name="CashSpecialist">
     <Key>
@@ -97,6 +101,7 @@
     <NavigationProperty Name="Contact" Relationship="Self.FK__Contact__cty_id__76969D2E" FromRole="Cities" ToRole="Contact" />
     <NavigationProperty Name="users" Relationship="Self.FK__users__cty_id__0B91BA14" FromRole="Cities" ToRole="users" />
     <Property Name="cty_dane_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PreClient" Relationship="BDRAModel.FK__PreClient__cty_i__7849DB76" FromRole="Cities" ToRole="PreClient" />
   </EntityType>
   <EntityType Name="Client">
     <Key>
@@ -227,6 +232,7 @@
     <NavigationProperty Name="ally" Relationship="Self.FK__ally__kod_id__6E01572D" FromRole="kindOfDocument" ToRole="ally" />
     <NavigationProperty Name="Client" Relationship="Self.FK__Client__kod_id__74AE54BC" FromRole="kindOfDocument" ToRole="Client" />
     <NavigationProperty Name="users" Relationship="Self.FK__users__kod_id__0D7A0286" FromRole="kindOfDocument" ToRole="users" />
+    <NavigationProperty Name="PreClient" Relationship="BDRAModel.FK__PreClient__kod_i__7755B73D" FromRole="kindOfDocument" ToRole="PreClient" />
   </EntityType>
   <EntityType Name="logins">
     <Key>
@@ -416,6 +422,7 @@
     <NavigationProperty Name="stateGroup" Relationship="Self.FK_state_stateGroup" FromRole="states" ToRole="stateGroup" />
     <NavigationProperty Name="states1" Relationship="Self.FK__states__sta_id__07C12930" FromRole="states" ToRole="states1" />
     <NavigationProperty Name="states2" Relationship="Self.FK__states__sta_id__07C12930" FromRole="states1" ToRole="states" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__sta_i__01D345B0" FromRole="states" ToRole="PreRequest" />
   </EntityType>
   <EntityType Name="userByRol">
     <Key>
@@ -452,6 +459,8 @@
     <NavigationProperty Name="riskInformationByRequest" Relationship="Self.FK_riskinformationByrequest_users" FromRole="users" ToRole="riskInformationByRequest" />
     <NavigationProperty Name="roles" Relationship="Self.FK__users__rol_id__0E6E26BF" FromRole="users" ToRole="roles" />
     <NavigationProperty Name="userByRol" Relationship="Self.FK__userByRol__usu_d__0A9D95DB" FromRole="users" ToRole="userByRol" />
+    <NavigationProperty Name="PreClient" Relationship="BDRAModel.FK__PreClient__usu_d__793DFFAF" FromRole="users" ToRole="PreClient" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__usu_d__02C769E9" FromRole="users" ToRole="PreRequest" />
   </EntityType>
   <EntityType Name="VicePresident">
     <Key>
@@ -1268,6 +1277,85 @@
       <End Role="VP" EntitySet="VP" />
       <End Role="additionalInformationByContact" EntitySet="additionalInformationByContact" />
     </AssociationSet>
+    <EntitySet Name="CanalGroup" EntityType="BDRAModel.CanalGroup" />
+    <EntitySet Name="PreClient" EntityType="BDRAModel.PreClient" />
+    <EntitySet Name="PreRequest" EntityType="BDRAModel.PreRequest" />
+    <EntitySet Name="VehicleModel" EntityType="BDRAModel.VehicleModel" />
+    <AssociationSet Name="FK_CANAL_CANALGROUP" Association="BDRAModel.FK_CANAL_CANALGROUP">
+      <End Role="CanalGroup" EntitySet="CanalGroup" />
+      <End Role="Canal" EntitySet="Canal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreClient__cty_i__7849DB76" Association="BDRAModel.FK__PreClient__cty_i__7849DB76">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="PreClient" EntitySet="PreClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreClient__kod_i__7755B73D" Association="BDRAModel.FK__PreClient__kod_i__7755B73D">
+      <End Role="kindOfDocument" EntitySet="kindOfDocument" />
+      <End Role="PreClient" EntitySet="PreClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreClient__usu_d__793DFFAF" Association="BDRAModel.FK__PreClient__usu_d__793DFFAF">
+      <End Role="users" EntitySet="users" />
+      <End Role="PreClient" EntitySet="PreClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__preCl__7FEAFD3E" Association="BDRAModel.FK__PreReques__preCl__7FEAFD3E">
+      <End Role="PreClient" EntitySet="PreClient" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__sta_i__01D345B0" Association="BDRAModel.FK__PreReques__sta_i__01D345B0">
+      <End Role="states" EntitySet="states" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__usu_d__02C769E9" Association="BDRAModel.FK__PreReques__usu_d__02C769E9">
+      <End Role="users" EntitySet="users" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__vehMd__00DF2177" Association="BDRAModel.FK__PreReques__vehMd__00DF2177">
+      <End Role="VehicleModel" EntitySet="VehicleModel" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FirstCanal_Canal" Association="BDRAModel.FK_FirstCanal_Canal">
+      <End Role="Canal" EntitySet="Canal" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecondCanal_Canal" Association="BDRAModel.FK_SecondCanal_Canal">
+      <End Role="Canal" EntitySet="Canal" />
+      <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <EntitySet Name="Template" EntityType="BDRAModel.Template" />
+    <EntitySet Name="TemplateField" EntityType="BDRAModel.TemplateField" />
+    <AssociationSet Name="FK__TemplateF__tmp_i__589C25F3" Association="BDRAModel.FK__TemplateF__tmp_i__589C25F3">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="TemplateField" EntitySet="TemplateField" />
+    </AssociationSet>
+    <FunctionImport Name="SP_GET_CLIENT" ReturnType="Collection(BDRAModel.SP_GET_CLIENT_Result)">
+      <Parameter Name="DATA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="STRPRC_GetConfigTemplateByPrefix" ReturnType="Collection(BDRAModel.STRPRC_GetConfigTemplateByPrefix_Result)">
+      <Parameter Name="prefix" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="STRPRC_GetFielsdByTemplate" ReturnType="Collection(BDRAModel.STRPRC_GetFielsdByTemplate_Result)">
+      <Parameter Name="ID_TEMPLATE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="STRPRC_UpdateRiskInformation">
+      <Parameter Name="ID_CLIENT" Mode="In" Type="String" />
+      <Parameter Name="RISK_STATE" Mode="In" Type="String" />
+      <Parameter Name="DATE_SUBMIT_ANALYSIS" Mode="In" Type="DateTime" />
+      <Parameter Name="DATE_RESPONSE_ANALYSIS" Mode="In" Type="DateTime" />
+      <Parameter Name="AMOUNT_APPROVED" Mode="In" Type="Int64" />
+      <Parameter Name="USER" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="STRPRCD_GET_REQUEST" ReturnType="Collection(BDRAModel.STRPRCD_GET_REQUEST_Result)" />
+    <FunctionImport Name="STRPRCD_GET_REQUEST_JSON" ReturnType="Collection(String)" />
+    <FunctionImport Name="STRPRCD_GET_REQUEST1" ReturnType="Collection(BDRAModel.STRPRCD_GET_REQUEST1_Result)" />
+    <FunctionImport Name="STRPRCD_GET_ALL_REQUEST" ReturnType="Collection(BDRAModel.STRPRCD_GET_ALL_REQUEST_Result)" />
+    <FunctionImport Name="STRPRC_GET_REQUEST_BY_FILTER">
+      <Parameter Name="FILTER" Mode="In" Type="String" />
+      <Parameter Name="VALUE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="STRPRC_GET_REQUEST_BY_FILTER_VALUE" ReturnType="Collection(BDRAModel.STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result)">
+      <Parameter Name="FILTER" Mode="In" Type="String" />
+      <Parameter Name="VALUE" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="RA_SP_GetDataToFile_Result">
     <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -1333,4 +1421,296 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CanalGroup">
+    <Key>
+      <PropertyRef Name="cnlGrp_id" />
+    </Key>
+    <Property Name="cnlGrp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cnlGrp_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="cnlGrp_state" Type="Boolean" />
+    <NavigationProperty Name="Canal" Relationship="BDRAModel.FK_CANAL_CANALGROUP" FromRole="CanalGroup" ToRole="Canal" />
+  </EntityType>
+  <EntityType Name="PreClient">
+    <Key>
+      <PropertyRef Name="preCli_id" />
+    </Key>
+    <Property Name="preCli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="preCli_document" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="kod_id" Type="Int32" />
+    <Property Name="preCli_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="preCli_lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="preCli_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="preCli_cellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="preCli_email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="cty_id" Type="Int32" />
+    <Property Name="preCli_state" Type="Boolean" />
+    <Property Name="preCli_registrationDate" Type="DateTime" Precision="7" />
+    <Property Name="usu_document" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cities" Relationship="BDRAModel.FK__PreClient__cty_i__7849DB76" FromRole="PreClient" ToRole="Cities" />
+    <NavigationProperty Name="kindOfDocument" Relationship="BDRAModel.FK__PreClient__kod_i__7755B73D" FromRole="PreClient" ToRole="kindOfDocument" />
+    <NavigationProperty Name="users" Relationship="BDRAModel.FK__PreClient__usu_d__793DFFAF" FromRole="PreClient" ToRole="users" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__preCl__7FEAFD3E" FromRole="PreClient" ToRole="PreRequest" />
+  </EntityType>
+  <EntityType Name="PreRequest">
+    <Key>
+      <PropertyRef Name="preReq_id" />
+    </Key>
+    <Property Name="preReq_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="preReq_registrationDate" Type="DateTime" Precision="7" />
+    <Property Name="preCli_id" Type="Int32" />
+    <Property Name="vehMdl_id" Type="Int32" />
+    <Property Name="sta_id" Type="Int32" />
+    <Property Name="preReq_state" Type="Boolean" />
+    <Property Name="usu_document" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PreClient" Relationship="BDRAModel.FK__PreReques__preCl__7FEAFD3E" FromRole="PreRequest" ToRole="PreClient" />
+    <NavigationProperty Name="states" Relationship="BDRAModel.FK__PreReques__sta_i__01D345B0" FromRole="PreRequest" ToRole="states" />
+    <NavigationProperty Name="users" Relationship="BDRAModel.FK__PreReques__usu_d__02C769E9" FromRole="PreRequest" ToRole="users" />
+    <NavigationProperty Name="VehicleModel" Relationship="BDRAModel.FK__PreReques__vehMd__00DF2177" FromRole="PreRequest" ToRole="VehicleModel" />
+    <Property Name="firstCanal_id" Type="Int32" />
+    <Property Name="secondCanal_id" Type="Int32" />
+    <NavigationProperty Name="Canal" Relationship="BDRAModel.FK_FirstCanal_Canal" FromRole="PreRequest" ToRole="Canal" />
+    <NavigationProperty Name="Canal1" Relationship="BDRAModel.FK_SecondCanal_Canal" FromRole="PreRequest" ToRole="Canal" />
+  </EntityType>
+  <EntityType Name="VehicleModel">
+    <Key>
+      <PropertyRef Name="vehMdl_id" />
+    </Key>
+    <Property Name="vehMdl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vehMdl_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vehMdl_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__vehMd__00DF2177" FromRole="VehicleModel" ToRole="PreRequest" />
+  </EntityType>
+  <Association Name="FK_CANAL_CANALGROUP">
+    <End Type="BDRAModel.CanalGroup" Role="CanalGroup" Multiplicity="0..1" />
+    <End Type="BDRAModel.Canal" Role="Canal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CanalGroup">
+        <PropertyRef Name="cnlGrp_id" />
+      </Principal>
+      <Dependent Role="Canal">
+        <PropertyRef Name="cnlGrp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreClient__cty_i__7849DB76">
+    <End Type="BDRAModel.Cities" Role="Cities" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreClient" Role="PreClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="cty_id" />
+      </Principal>
+      <Dependent Role="PreClient">
+        <PropertyRef Name="cty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreClient__kod_i__7755B73D">
+    <End Type="BDRAModel.kindOfDocument" Role="kindOfDocument" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreClient" Role="PreClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kindOfDocument">
+        <PropertyRef Name="kod_id" />
+      </Principal>
+      <Dependent Role="PreClient">
+        <PropertyRef Name="kod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreClient__usu_d__793DFFAF">
+    <End Type="BDRAModel.users" Role="users" Multiplicity="1" />
+    <End Type="BDRAModel.PreClient" Role="PreClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usu_document" />
+      </Principal>
+      <Dependent Role="PreClient">
+        <PropertyRef Name="usu_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__preCl__7FEAFD3E">
+    <End Type="BDRAModel.PreClient" Role="PreClient" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreClient">
+        <PropertyRef Name="preCli_id" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="preCli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__sta_i__01D345B0">
+    <End Type="BDRAModel.states" Role="states" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="states">
+        <PropertyRef Name="sta_id" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="sta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__usu_d__02C769E9">
+    <End Type="BDRAModel.users" Role="users" Multiplicity="1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usu_document" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="usu_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__vehMd__00DF2177">
+    <End Type="BDRAModel.VehicleModel" Role="VehicleModel" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleModel">
+        <PropertyRef Name="vehMdl_id" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="vehMdl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FirstCanal_Canal">
+    <End Type="BDRAModel.Canal" Role="Canal" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canal">
+        <PropertyRef Name="cnl_id" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="firstCanal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecondCanal_Canal">
+    <End Type="BDRAModel.Canal" Role="Canal" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canal">
+        <PropertyRef Name="cnl_id" />
+      </Principal>
+      <Dependent Role="PreRequest">
+        <PropertyRef Name="firstCanal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Template">
+    <Key>
+      <PropertyRef Name="tmp_id" />
+    </Key>
+    <Property Name="tmp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tmp_prefix" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tmp_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tmp_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tmp_sp_to_execute" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tmp_separator" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="tmp_registration_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TemplateField" Relationship="BDRAModel.FK__TemplateF__tmp_i__589C25F3" FromRole="Template" ToRole="TemplateField" />
+  </EntityType>
+  <EntityType Name="TemplateField">
+    <Key>
+      <PropertyRef Name="tmpFl_id" />
+    </Key>
+    <Property Name="tmpFl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tmp_id" Type="Int32" Nullable="false" />
+    <Property Name="tmpFl_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tmpFl_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tmpFl_position" Type="Int32" />
+    <Property Name="tmpFl_parameter_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tmpFl_parameterType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tmpFl_registration_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Template" Relationship="BDRAModel.FK__TemplateF__tmp_i__589C25F3" FromRole="TemplateField" ToRole="Template" />
+  </EntityType>
+  <Association Name="FK__TemplateF__tmp_i__589C25F3">
+    <End Type="BDRAModel.Template" Role="Template" Multiplicity="1" />
+    <End Type="BDRAModel.TemplateField" Role="TemplateField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="tmp_id" />
+      </Principal>
+      <Dependent Role="TemplateField">
+        <PropertyRef Name="tmp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_GET_CLIENT_Result">
+    <Property Type="String" Name="cli_document" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="kod_id" Nullable="true" />
+    <Property Type="String" Name="cli_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cli_lastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cli_phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="cli_cellPhone" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="cnl_id" Nullable="true" />
+    <Property Type="Int32" Name="ea_id" Nullable="true" />
+    <Property Type="Int32" Name="cty_id" Nullable="true" />
+    <Property Type="Boolean" Name="cli_state" Nullable="true" />
+    <Property Type="DateTime" Name="cli_registrationDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="cli_email" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="STRPRC_GetConfigTemplateByPrefix_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="prefix" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="sp" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="separator" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="registration_date" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="STRPRC_GetFielsdByTemplate_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="POSITION" Nullable="true" />
+    <Property Type="String" Name="PARAMETER_NAME" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PARAMETER_TYPE" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="REGISTRATION_DATE" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="STRPRCD_GET_REQUEST_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="probability" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="primaryState" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="secondState" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="user" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="STRPRCD_GET_REQUEST1_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="probability" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="primaryState" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="secondState" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="user" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="STRPRCD_GET_ALL_REQUEST_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="probability" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="primaryState" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="secondState" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="userLastName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result">
+    <Property Type="String" Name="code" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="probability" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="primaryState" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="secondState" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="userLastName" Nullable="true" MaxLength="255" />
+  </ComplexType>
 </Schema>

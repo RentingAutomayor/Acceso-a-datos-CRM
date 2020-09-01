@@ -32,3 +32,10 @@ D:\RentingAutomayor\DAO\obj\Debug\DAO.dll
 D:\RentingAutomayor\DAO\obj\Debug\DAO.pdb
 D:\RentingAutomayor\DAO\bin\Debug\EntityFramework.dll
 D:\RentingAutomayor\DAO\bin\Debug\EntityFramework.SqlServer.dll
+D:\RepositoriosRenting\Acceso-a-datos-CRM\bin\Debug\DAO.dll.config
+D:\RepositoriosRenting\Acceso-a-datos-CRM\bin\Debug\DAO.dll
+D:\RepositoriosRenting\Acceso-a-datos-CRM\bin\Debug\DAO.pdb
+D:\RepositoriosRenting\Acceso-a-datos-CRM\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+D:\RepositoriosRenting\Acceso-a-datos-CRM\obj\Debug\DAO.csproj.CopyComplete
+D:\RepositoriosRenting\Acceso-a-datos-CRM\obj\Debug\DAO.dll
+D:\RepositoriosRenting\Acceso-a-datos-CRM\obj\Debug\DAO.pdb

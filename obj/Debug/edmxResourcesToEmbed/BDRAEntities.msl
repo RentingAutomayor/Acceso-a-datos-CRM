@@ -57,6 +57,7 @@
     <EntitySetMapping Name="Canal">
       <EntityTypeMapping TypeName="BDRAModel.Canal">
         <MappingFragment StoreEntitySet="Canal">
+          <ScalarProperty Name="cnlGrp_id" ColumnName="cnlGrp_id" />
           <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
           <ScalarProperty Name="cnl_description" ColumnName="cnl_description" />
           <ScalarProperty Name="cnl_state" ColumnName="cnl_state" />
@@ -471,5 +472,159 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CanalGroup">
+      <EntityTypeMapping TypeName="BDRAModel.CanalGroup">
+        <MappingFragment StoreEntitySet="CanalGroup">
+          <ScalarProperty Name="cnlGrp_state" ColumnName="cnlGrp_state" />
+          <ScalarProperty Name="cnlGrp_description" ColumnName="cnlGrp_description" />
+          <ScalarProperty Name="cnlGrp_id" ColumnName="cnlGrp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreClient">
+      <EntityTypeMapping TypeName="BDRAModel.PreClient">
+        <MappingFragment StoreEntitySet="PreClient">
+          <ScalarProperty Name="usu_document" ColumnName="usu_document" />
+          <ScalarProperty Name="preCli_registrationDate" ColumnName="preCli_registrationDate" />
+          <ScalarProperty Name="preCli_state" ColumnName="preCli_state" />
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="preCli_email" ColumnName="preCli_email" />
+          <ScalarProperty Name="preCli_cellPhone" ColumnName="preCli_cellPhone" />
+          <ScalarProperty Name="preCli_phone" ColumnName="preCli_phone" />
+          <ScalarProperty Name="preCli_lastName" ColumnName="preCli_lastName" />
+          <ScalarProperty Name="preCli_name" ColumnName="preCli_name" />
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="preCli_document" ColumnName="preCli_document" />
+          <ScalarProperty Name="preCli_id" ColumnName="preCli_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreRequest">
+      <EntityTypeMapping TypeName="BDRAModel.PreRequest">
+        <MappingFragment StoreEntitySet="PreRequest">
+          <ScalarProperty Name="secondCanal_id" ColumnName="secondCanal_id" />
+          <ScalarProperty Name="firstCanal_id" ColumnName="firstCanal_id" />
+          <ScalarProperty Name="usu_document" ColumnName="usu_document" />
+          <ScalarProperty Name="preReq_state" ColumnName="preReq_state" />
+          <ScalarProperty Name="sta_id" ColumnName="sta_id" />
+          <ScalarProperty Name="vehMdl_id" ColumnName="vehMdl_id" />
+          <ScalarProperty Name="preCli_id" ColumnName="preCli_id" />
+          <ScalarProperty Name="preReq_registrationDate" ColumnName="preReq_registrationDate" />
+          <ScalarProperty Name="preReq_id" ColumnName="preReq_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleModel">
+      <EntityTypeMapping TypeName="BDRAModel.VehicleModel">
+        <MappingFragment StoreEntitySet="VehicleModel">
+          <ScalarProperty Name="vehMdl_description" ColumnName="vehMdl_description" />
+          <ScalarProperty Name="vehMdl_name" ColumnName="vehMdl_name" />
+          <ScalarProperty Name="vehMdl_id" ColumnName="vehMdl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Template">
+      <EntityTypeMapping TypeName="BDRAModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="tmp_registration_date" ColumnName="tmp_registration_date" />
+          <ScalarProperty Name="tmp_separator" ColumnName="tmp_separator" />
+          <ScalarProperty Name="tmp_sp_to_execute" ColumnName="tmp_sp_to_execute" />
+          <ScalarProperty Name="tmp_description" ColumnName="tmp_description" />
+          <ScalarProperty Name="tmp_name" ColumnName="tmp_name" />
+          <ScalarProperty Name="tmp_prefix" ColumnName="tmp_prefix" />
+          <ScalarProperty Name="tmp_id" ColumnName="tmp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemplateField">
+      <EntityTypeMapping TypeName="BDRAModel.TemplateField">
+        <MappingFragment StoreEntitySet="TemplateField">
+          <ScalarProperty Name="tmpFl_registration_date" ColumnName="tmpFl_registration_date" />
+          <ScalarProperty Name="tmpFl_parameterType" ColumnName="tmpFl_parameterType" />
+          <ScalarProperty Name="tmpFl_parameter_name" ColumnName="tmpFl_parameter_name" />
+          <ScalarProperty Name="tmpFl_position" ColumnName="tmpFl_position" />
+          <ScalarProperty Name="tmpFl_description" ColumnName="tmpFl_description" />
+          <ScalarProperty Name="tmpFl_name" ColumnName="tmpFl_name" />
+          <ScalarProperty Name="tmp_id" ColumnName="tmp_id" />
+          <ScalarProperty Name="tmpFl_id" ColumnName="tmpFl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_CLIENT" FunctionName="BDRAModel.Store.SP_GET_CLIENT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.SP_GET_CLIENT_Result">
+          <ScalarProperty Name="cli_document" ColumnName="cli_document" />
+          <ScalarProperty Name="kod_id" ColumnName="kod_id" />
+          <ScalarProperty Name="cli_name" ColumnName="cli_name" />
+          <ScalarProperty Name="cli_lastName" ColumnName="cli_lastName" />
+          <ScalarProperty Name="cli_phone" ColumnName="cli_phone" />
+          <ScalarProperty Name="cli_cellPhone" ColumnName="cli_cellPhone" />
+          <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
+          <ScalarProperty Name="ea_id" ColumnName="ea_id" />
+          <ScalarProperty Name="cty_id" ColumnName="cty_id" />
+          <ScalarProperty Name="cli_state" ColumnName="cli_state" />
+          <ScalarProperty Name="cli_registrationDate" ColumnName="cli_registrationDate" />
+          <ScalarProperty Name="cli_email" ColumnName="cli_email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GetConfigTemplateByPrefix" FunctionName="BDRAModel.Store.STRPRC_GetConfigTemplateByPrefix">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GetConfigTemplateByPrefix_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="sp" ColumnName="sp" />
+          <ScalarProperty Name="separator" ColumnName="separator" />
+          <ScalarProperty Name="registration_date" ColumnName="registration date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GetFielsdByTemplate" FunctionName="BDRAModel.Store.STRPRC_GetFielsdByTemplate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GetFielsdByTemplate_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="PARAMETER_NAME" ColumnName="PARAMETER_NAME" />
+          <ScalarProperty Name="PARAMETER_TYPE" ColumnName="PARAMETER_TYPE" />
+          <ScalarProperty Name="REGISTRATION_DATE" ColumnName="REGISTRATION_DATE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_UpdateRiskInformation" FunctionName="BDRAModel.Store.STRPRC_UpdateRiskInformation" />
+    <FunctionImportMapping FunctionImportName="STRPRCD_GET_ALL_REQUEST" FunctionName="BDRAModel.Store.STRPRCD_GET_ALL_REQUEST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRCD_GET_ALL_REQUEST_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="probability" ColumnName="probability" />
+          <ScalarProperty Name="primaryState" ColumnName="primaryState" />
+          <ScalarProperty Name="secondState" ColumnName="secondState" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GET_REQUEST_BY_FILTER" FunctionName="BDRAModel.Store.STRPRC_GET_REQUEST_BY_FILTER" />
+    <FunctionImportMapping FunctionImportName="STRPRC_GET_REQUEST_BY_FILTER_VALUE" FunctionName="BDRAModel.Store.STRPRC_GET_REQUEST_BY_FILTER_VALUE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="probability" ColumnName="probability" />
+          <ScalarProperty Name="primaryState" ColumnName="primaryState" />
+          <ScalarProperty Name="secondState" ColumnName="secondState" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userLastName" ColumnName="userLastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

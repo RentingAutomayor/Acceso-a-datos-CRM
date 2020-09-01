@@ -20,6 +20,7 @@ namespace DAO
             this.Client = new HashSet<Client>();
             this.Contact = new HashSet<Contact>();
             this.users = new HashSet<users>();
+            this.PreClient = new HashSet<PreClient>();
         }
     
         public int cty_id { get; set; }
@@ -35,5 +36,7 @@ namespace DAO
         public virtual ICollection<Contact> Contact { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<users> users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PreClient> PreClient { get; set; }
     }
 }

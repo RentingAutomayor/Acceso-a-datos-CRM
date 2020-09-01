@@ -12,27 +12,31 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Canal
+    public partial class PreClient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Canal()
+        public PreClient()
         {
-            this.Client = new HashSet<Client>();
             this.PreRequest = new HashSet<PreRequest>();
-            this.PreRequest1 = new HashSet<PreRequest>();
         }
     
-        public int cnl_id { get; set; }
-        public string cnl_description { get; set; }
-        public Nullable<bool> cnl_state { get; set; }
-        public Nullable<int> cnlGrp_id { get; set; }
+        public int preCli_id { get; set; }
+        public string preCli_document { get; set; }
+        public Nullable<int> kod_id { get; set; }
+        public string preCli_name { get; set; }
+        public string preCli_lastName { get; set; }
+        public string preCli_phone { get; set; }
+        public string preCli_cellPhone { get; set; }
+        public string preCli_email { get; set; }
+        public Nullable<int> cty_id { get; set; }
+        public Nullable<bool> preCli_state { get; set; }
+        public Nullable<System.DateTime> preCli_registrationDate { get; set; }
+        public string usu_document { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
-        public virtual CanalGroup CanalGroup { get; set; }
+        public virtual Cities Cities { get; set; }
+        public virtual kindOfDocument kindOfDocument { get; set; }
+        public virtual users users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreRequest> PreRequest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PreRequest> PreRequest1 { get; set; }
     }
 }

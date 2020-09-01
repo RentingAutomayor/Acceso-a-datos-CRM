@@ -66,10 +66,118 @@ namespace DAO
         public virtual DbSet<VicePresident> VicePresident { get; set; }
         public virtual DbSet<Zonal> Zonal { get; set; }
         public virtual DbSet<VP> VP { get; set; }
+        public virtual DbSet<CanalGroup> CanalGroup { get; set; }
+        public virtual DbSet<PreClient> PreClient { get; set; }
+        public virtual DbSet<PreRequest> PreRequest { get; set; }
+        public virtual DbSet<VehicleModel> VehicleModel { get; set; }
+        public virtual DbSet<Template> Template { get; set; }
+        public virtual DbSet<TemplateField> TemplateField { get; set; }
     
         public virtual ObjectResult<RA_SP_GetDataToFile_Result> RA_SP_GetDataToFile()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RA_SP_GetDataToFile_Result>("RA_SP_GetDataToFile");
+        }
+    
+        public virtual ObjectResult<SP_GET_CLIENT_Result> SP_GET_CLIENT(string dATA)
+        {
+            var dATAParameter = dATA != null ?
+                new ObjectParameter("DATA", dATA) :
+                new ObjectParameter("DATA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GET_CLIENT_Result>("SP_GET_CLIENT", dATAParameter);
+        }
+    
+        public virtual ObjectResult<STRPRC_GetConfigTemplateByPrefix_Result> STRPRC_GetConfigTemplateByPrefix(string prefix)
+        {
+            var prefixParameter = prefix != null ?
+                new ObjectParameter("prefix", prefix) :
+                new ObjectParameter("prefix", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GetConfigTemplateByPrefix_Result>("STRPRC_GetConfigTemplateByPrefix", prefixParameter);
+        }
+    
+        public virtual ObjectResult<STRPRC_GetFielsdByTemplate_Result> STRPRC_GetFielsdByTemplate(Nullable<int> iD_TEMPLATE)
+        {
+            var iD_TEMPLATEParameter = iD_TEMPLATE.HasValue ?
+                new ObjectParameter("ID_TEMPLATE", iD_TEMPLATE) :
+                new ObjectParameter("ID_TEMPLATE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GetFielsdByTemplate_Result>("STRPRC_GetFielsdByTemplate", iD_TEMPLATEParameter);
+        }
+    
+        public virtual int STRPRC_UpdateRiskInformation(string iD_CLIENT, string rISK_STATE, Nullable<System.DateTime> dATE_SUBMIT_ANALYSIS, Nullable<System.DateTime> dATE_RESPONSE_ANALYSIS, Nullable<long> aMOUNT_APPROVED, string uSER)
+        {
+            var iD_CLIENTParameter = iD_CLIENT != null ?
+                new ObjectParameter("ID_CLIENT", iD_CLIENT) :
+                new ObjectParameter("ID_CLIENT", typeof(string));
+    
+            var rISK_STATEParameter = rISK_STATE != null ?
+                new ObjectParameter("RISK_STATE", rISK_STATE) :
+                new ObjectParameter("RISK_STATE", typeof(string));
+    
+            var dATE_SUBMIT_ANALYSISParameter = dATE_SUBMIT_ANALYSIS.HasValue ?
+                new ObjectParameter("DATE_SUBMIT_ANALYSIS", dATE_SUBMIT_ANALYSIS) :
+                new ObjectParameter("DATE_SUBMIT_ANALYSIS", typeof(System.DateTime));
+    
+            var dATE_RESPONSE_ANALYSISParameter = dATE_RESPONSE_ANALYSIS.HasValue ?
+                new ObjectParameter("DATE_RESPONSE_ANALYSIS", dATE_RESPONSE_ANALYSIS) :
+                new ObjectParameter("DATE_RESPONSE_ANALYSIS", typeof(System.DateTime));
+    
+            var aMOUNT_APPROVEDParameter = aMOUNT_APPROVED.HasValue ?
+                new ObjectParameter("AMOUNT_APPROVED", aMOUNT_APPROVED) :
+                new ObjectParameter("AMOUNT_APPROVED", typeof(long));
+    
+            var uSERParameter = uSER != null ?
+                new ObjectParameter("USER", uSER) :
+                new ObjectParameter("USER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STRPRC_UpdateRiskInformation", iD_CLIENTParameter, rISK_STATEParameter, dATE_SUBMIT_ANALYSISParameter, dATE_RESPONSE_ANALYSISParameter, aMOUNT_APPROVEDParameter, uSERParameter);
+        }
+    
+        public virtual ObjectResult<STRPRCD_GET_REQUEST_Result> STRPRCD_GET_REQUEST()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRCD_GET_REQUEST_Result>("STRPRCD_GET_REQUEST");
+        }
+    
+        public virtual ObjectResult<string> STRPRCD_GET_REQUEST_JSON()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("STRPRCD_GET_REQUEST_JSON");
+        }
+    
+        public virtual ObjectResult<STRPRCD_GET_REQUEST1_Result> STRPRCD_GET_REQUEST1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRCD_GET_REQUEST1_Result>("STRPRCD_GET_REQUEST1");
+        }
+    
+        public virtual ObjectResult<STRPRCD_GET_ALL_REQUEST_Result> STRPRCD_GET_ALL_REQUEST()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRCD_GET_ALL_REQUEST_Result>("STRPRCD_GET_ALL_REQUEST");
+        }
+    
+        public virtual int STRPRC_GET_REQUEST_BY_FILTER(string fILTER, string vALUE)
+        {
+            var fILTERParameter = fILTER != null ?
+                new ObjectParameter("FILTER", fILTER) :
+                new ObjectParameter("FILTER", typeof(string));
+    
+            var vALUEParameter = vALUE != null ?
+                new ObjectParameter("VALUE", vALUE) :
+                new ObjectParameter("VALUE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STRPRC_GET_REQUEST_BY_FILTER", fILTERParameter, vALUEParameter);
+        }
+    
+        public virtual ObjectResult<STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result> STRPRC_GET_REQUEST_BY_FILTER_VALUE(string fILTER, string vALUE)
+        {
+            var fILTERParameter = fILTER != null ?
+                new ObjectParameter("FILTER", fILTER) :
+                new ObjectParameter("FILTER", typeof(string));
+    
+            var vALUEParameter = vALUE != null ?
+                new ObjectParameter("VALUE", vALUE) :
+                new ObjectParameter("VALUE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result>("STRPRC_GET_REQUEST_BY_FILTER_VALUE", fILTERParameter, vALUEParameter);
         }
     }
 }

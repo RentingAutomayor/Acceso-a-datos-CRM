@@ -12,27 +12,19 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Canal
+    public partial class VehicleModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Canal()
+        public VehicleModel()
         {
-            this.Client = new HashSet<Client>();
             this.PreRequest = new HashSet<PreRequest>();
-            this.PreRequest1 = new HashSet<PreRequest>();
         }
     
-        public int cnl_id { get; set; }
-        public string cnl_description { get; set; }
-        public Nullable<bool> cnl_state { get; set; }
-        public Nullable<int> cnlGrp_id { get; set; }
+        public int vehMdl_id { get; set; }
+        public string vehMdl_name { get; set; }
+        public string vehMdl_description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
-        public virtual CanalGroup CanalGroup { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreRequest> PreRequest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PreRequest> PreRequest1 { get; set; }
     }
 }

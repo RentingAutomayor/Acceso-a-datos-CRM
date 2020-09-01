@@ -92,6 +92,23 @@
         <AssociationConnector Association="BDRAModel.FK__userByRol__usu_d__0A9D95DB" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BDRAModel.VP" Width="1.5" PointX="4.375" PointY="4.875" />
         <AssociationConnector Association="BDRAModel.FK_additionalInformationByContact_vp" />
+        <EntityTypeShape EntityType="BDRAModel.CanalGroup" Width="1.5" PointX="0.75" PointY="30.125" />
+        <EntityTypeShape EntityType="BDRAModel.PreClient" Width="1.5" PointX="10.25" PointY="19.5" />
+        <EntityTypeShape EntityType="BDRAModel.PreRequest" Width="1.5" PointX="12.75" PointY="8.625" />
+        <EntityTypeShape EntityType="BDRAModel.VehicleModel" Width="1.5" PointX="10.5" PointY="25.375" />
+        <AssociationConnector Association="BDRAModel.FK_CANAL_CANALGROUP" />
+        <AssociationConnector Association="BDRAModel.FK__PreClient__cty_i__7849DB76" />
+        <AssociationConnector Association="BDRAModel.FK__PreClient__kod_i__7755B73D" />
+        <AssociationConnector Association="BDRAModel.FK__PreClient__usu_d__793DFFAF" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__preCl__7FEAFD3E" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__sta_i__01D345B0" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__usu_d__02C769E9" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__vehMd__00DF2177" />
+        <AssociationConnector Association="BDRAModel.FK_FirstCanal_Canal" />
+        <AssociationConnector Association="BDRAModel.FK_SecondCanal_Canal" />
+        <EntityTypeShape EntityType="BDRAModel.Template" Width="1.5" PointX="13.375" PointY="1" />
+        <EntityTypeShape EntityType="BDRAModel.TemplateField" Width="1.5" PointX="15.625" PointY="1" />
+        <AssociationConnector Association="BDRAModel.FK__TemplateF__tmp_i__589C25F3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
