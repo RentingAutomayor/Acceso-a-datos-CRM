@@ -73,11 +73,11 @@
     <Property Name="cnl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="cnl_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="cnl_state" Type="Boolean" />
-    <NavigationProperty Name="Client" Relationship="Self.FK__Client__cnl_id__71D1E811" FromRole="Canal" ToRole="Client" />
     <Property Name="cnlGrp_id" Type="Int32" />
     <NavigationProperty Name="CanalGroup" Relationship="BDRAModel.FK_CANAL_CANALGROUP" FromRole="Canal" ToRole="CanalGroup" />
     <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK_FirstCanal_Canal" FromRole="Canal" ToRole="PreRequest" />
     <NavigationProperty Name="PreRequest1" Relationship="BDRAModel.FK_SecondCanal_Canal" FromRole="Canal" ToRole="PreRequest" />
+    <NavigationProperty Name="Request" Relationship="BDRAModel.PK_request_canal" FromRole="Canal" ToRole="Request" />
   </EntityType>
   <EntityType Name="CashSpecialist">
     <Key>
@@ -113,14 +113,12 @@
     <Property Name="cli_lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cli_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="cli_cellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="cnl_id" Type="Int32" />
     <Property Name="ea_id" Type="Int32" />
     <Property Name="cty_id" Type="Int32" />
     <Property Name="cli_state" Type="Boolean" />
     <Property Name="cli_registrationDate" Type="DateTime" Precision="3" />
     <Property Name="cli_email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="branch" Relationship="Self.FK__branch__cli_docu__6FE99F9F" FromRole="Client" ToRole="branch" />
-    <NavigationProperty Name="Canal" Relationship="Self.FK__Client__cnl_id__71D1E811" FromRole="Client" ToRole="Canal" />
     <NavigationProperty Name="Cities" Relationship="Self.FK__Client__cty_id__72C60C4A" FromRole="Client" ToRole="Cities" />
     <NavigationProperty Name="EconomicActivity" Relationship="Self.FK__Client__ea_id__73BA3083" FromRole="Client" ToRole="EconomicActivity" />
     <NavigationProperty Name="kindOfDocument" Relationship="Self.FK__Client__kod_id__74AE54BC" FromRole="Client" ToRole="kindOfDocument" />
@@ -359,6 +357,9 @@
     <NavigationProperty Name="states1" Relationship="Self.FK__Request__rqt_sec__02FC7413" FromRole="Request" ToRole="states" />
     <NavigationProperty Name="users" Relationship="Self.FK__Request__usu_doc__03F0984C" FromRole="Request" ToRole="users" />
     <NavigationProperty Name="riskInformationByRequest" Relationship="Self.FK__riskInfor__rqt_i__05D8E0BE" FromRole="Request" ToRole="riskInformationByRequest" />
+    <Property Name="rqt_observation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="cnl_id" Type="Int32" />
+    <NavigationProperty Name="Canal" Relationship="BDRAModel.PK_request_canal" FromRole="Request" ToRole="Canal" />
   </EntityType>
   <EntityType Name="riskInformationByRequest">
     <Key>
@@ -657,18 +658,6 @@
       </Principal>
       <Dependent Role="Contact">
         <PropertyRef Name="bra_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Client__cnl_id__71D1E811">
-    <End Role="Canal" Type="Self.Canal" Multiplicity="0..1" />
-    <End Role="Client" Type="Self.Client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Canal">
-        <PropertyRef Name="cnl_id" />
-      </Principal>
-      <Dependent Role="Client">
-        <PropertyRef Name="cnl_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1143,10 +1132,6 @@
       <End Role="branch" EntitySet="branch" />
       <End Role="Contact" EntitySet="Contact" />
     </AssociationSet>
-    <AssociationSet Name="FK__Client__cnl_id__71D1E811" Association="Self.FK__Client__cnl_id__71D1E811">
-      <End Role="Canal" EntitySet="Canal" />
-      <End Role="Client" EntitySet="Client" />
-    </AssociationSet>
     <AssociationSet Name="FK__Cities__dpt_id__70DDC3D8" Association="Self.FK__Cities__dpt_id__70DDC3D8">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Cities" EntitySet="Cities" />
@@ -1356,6 +1341,10 @@
       <Parameter Name="FILTER" Mode="In" Type="String" />
       <Parameter Name="VALUE" Mode="In" Type="String" />
     </FunctionImport>
+    <AssociationSet Name="PK_request_canal" Association="BDRAModel.PK_request_canal">
+      <End Role="Canal" EntitySet="Canal" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="RA_SP_GetDataToFile_Result">
     <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -1713,4 +1702,16 @@
     <Property Type="String" Name="userName" Nullable="true" MaxLength="255" />
     <Property Type="String" Name="userLastName" Nullable="true" MaxLength="255" />
   </ComplexType>
+  <Association Name="PK_request_canal">
+    <End Type="BDRAModel.Canal" Role="Canal" Multiplicity="0..1" />
+    <End Type="BDRAModel.Request" Role="Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canal">
+        <PropertyRef Name="cnl_id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="cnl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

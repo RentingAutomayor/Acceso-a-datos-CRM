@@ -27,7 +27,6 @@ namespace DAO
         public string cli_lastName { get; set; }
         public string cli_phone { get; set; }
         public string cli_cellPhone { get; set; }
-        public Nullable<int> cnl_id { get; set; }
         public Nullable<int> ea_id { get; set; }
         public Nullable<int> cty_id { get; set; }
         public Nullable<bool> cli_state { get; set; }
@@ -36,7 +35,6 @@ namespace DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<branch> branch { get; set; }
-        public virtual Canal Canal { get; set; }
         public virtual Cities Cities { get; set; }
         public virtual EconomicActivity EconomicActivity { get; set; }
         public virtual kindOfDocument kindOfDocument { get; set; }

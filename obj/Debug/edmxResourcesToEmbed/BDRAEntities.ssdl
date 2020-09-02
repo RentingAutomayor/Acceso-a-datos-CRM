@@ -94,7 +94,6 @@
     <Property Name="cli_lastName" Type="varchar" MaxLength="100" />
     <Property Name="cli_phone" Type="varchar" MaxLength="15" />
     <Property Name="cli_cellPhone" Type="varchar" MaxLength="15" />
-    <Property Name="cnl_id" Type="int" />
     <Property Name="ea_id" Type="int" />
     <Property Name="cty_id" Type="int" />
     <Property Name="cli_state" Type="bit" />
@@ -325,6 +324,8 @@
     <Property Name="usu_document" Type="varchar" MaxLength="30" />
     <Property Name="rqt_state" Type="bit" />
     <Property Name="cnt_id" Type="int" />
+    <Property Name="rqt_observation" Type="varchar" MaxLength="500" />
+    <Property Name="cnl_id" Type="int" />
   </EntityType>
   <EntityType Name="riskInformationByRequest">
     <Key>
@@ -621,18 +622,6 @@
       </Principal>
       <Dependent Role="Cities">
         <PropertyRef Name="dpt_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Client__cnl_id__2DE6D218">
-    <End Role="Canal" Type="Self.Canal" Multiplicity="0..1" />
-    <End Role="Client" Type="Self.Client" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Canal">
-        <PropertyRef Name="cnl_id" />
-      </Principal>
-      <Dependent Role="Client">
-        <PropertyRef Name="cnl_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1164,6 +1153,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PK_request_canal">
+    <End Role="Canal" Type="Self.Canal" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canal">
+        <PropertyRef Name="cnl_id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="cnl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="RA_SP_GetDataToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DATA" Type="varchar" Mode="In" />
@@ -1292,10 +1293,6 @@
     <AssociationSet Name="FK__Cities__dpt_id__2CF2ADDF" Association="Self.FK__Cities__dpt_id__2CF2ADDF">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Cities" EntitySet="Cities" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Client__cnl_id__2DE6D218" Association="Self.FK__Client__cnl_id__2DE6D218">
-      <End Role="Canal" EntitySet="Canal" />
-      <End Role="Client" EntitySet="Client" />
     </AssociationSet>
     <AssociationSet Name="FK__Client__cty_id__2EDAF651" Association="Self.FK__Client__cty_id__2EDAF651">
       <End Role="Cities" EntitySet="Cities" />
@@ -1472,6 +1469,10 @@
     <AssociationSet Name="FK_state_stateGroup" Association="Self.FK_state_stateGroup">
       <End Role="stateGroup" EntitySet="stateGroup" />
       <End Role="states" EntitySet="states" />
+    </AssociationSet>
+    <AssociationSet Name="PK_request_canal" Association="Self.PK_request_canal">
+      <End Role="Canal" EntitySet="Canal" />
+      <End Role="Request" EntitySet="Request" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

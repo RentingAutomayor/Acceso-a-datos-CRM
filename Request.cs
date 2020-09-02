@@ -32,6 +32,8 @@ namespace DAO
         public string usu_document { get; set; }
         public Nullable<bool> rqt_state { get; set; }
         public Nullable<int> cnt_id { get; set; }
+        public string rqt_observation { get; set; }
+        public Nullable<int> cnl_id { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Contact Contact { get; set; }
@@ -43,5 +45,6 @@ namespace DAO
         public virtual users users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<riskInformationByRequest> riskInformationByRequest { get; set; }
+        public virtual Canal Canal { get; set; }
     }
 }

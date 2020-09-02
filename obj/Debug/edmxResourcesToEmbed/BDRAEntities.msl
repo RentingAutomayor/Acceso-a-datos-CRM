@@ -93,7 +93,6 @@
           <ScalarProperty Name="cli_lastName" ColumnName="cli_lastName" />
           <ScalarProperty Name="cli_phone" ColumnName="cli_phone" />
           <ScalarProperty Name="cli_cellPhone" ColumnName="cli_cellPhone" />
-          <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
           <ScalarProperty Name="ea_id" ColumnName="ea_id" />
           <ScalarProperty Name="cty_id" ColumnName="cty_id" />
           <ScalarProperty Name="cli_state" ColumnName="cli_state" />
@@ -303,6 +302,8 @@
     <EntitySetMapping Name="Request">
       <EntityTypeMapping TypeName="BDRAModel.Request">
         <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="cnl_id" ColumnName="cnl_id" />
+          <ScalarProperty Name="rqt_observation" ColumnName="rqt_observation" />
           <ScalarProperty Name="rqt_id" ColumnName="rqt_id" />
           <ScalarProperty Name="rqt_registrationDate" ColumnName="rqt_registrationDate" />
           <ScalarProperty Name="rqt_firstVisitDate" ColumnName="rqt_firstVisitDate" />

@@ -17,9 +17,9 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Canal()
         {
-            this.Client = new HashSet<Client>();
             this.PreRequest = new HashSet<PreRequest>();
             this.PreRequest1 = new HashSet<PreRequest>();
+            this.Request = new HashSet<Request>();
         }
     
         public int cnl_id { get; set; }
@@ -27,12 +27,12 @@ namespace DAO
         public Nullable<bool> cnl_state { get; set; }
         public Nullable<int> cnlGrp_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
         public virtual CanalGroup CanalGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreRequest> PreRequest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreRequest> PreRequest1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Request { get; set; }
     }
 }
