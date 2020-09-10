@@ -277,6 +277,16 @@
     <Property Name="firstCanal_id" Type="int" />
     <Property Name="secondCanal_id" Type="int" />
   </EntityType>
+  <EntityType Name="PreRequest_Observation">
+    <Key>
+      <PropertyRef Name="prObs_id" />
+    </Key>
+    <Property Name="prObs_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="preReq_id" Type="int" Nullable="false" />
+    <Property Name="prObs_observation" Type="varchar" MaxLength="500" />
+    <Property Name="prObs_registrationDate" Type="datetime" />
+    <Property Name="usu_document" Type="varchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="probability">
     <Key>
       <PropertyRef Name="prb_id" />
@@ -829,6 +839,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__PreReques__preRe__7BE56230">
+    <End Role="PreRequest" Type="Self.PreRequest" Multiplicity="1" />
+    <End Role="PreRequest_Observation" Type="Self.PreRequest_Observation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreRequest">
+        <PropertyRef Name="preReq_id" />
+      </Principal>
+      <Dependent Role="PreRequest_Observation">
+        <PropertyRef Name="preReq_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__PreReques__sta_i__01D345B0">
     <End Role="states" Type="Self.states" Multiplicity="0..1" />
     <End Role="PreRequest" Type="Self.PreRequest" Multiplicity="*" />
@@ -849,6 +871,18 @@
         <PropertyRef Name="usu_document" />
       </Principal>
       <Dependent Role="PreRequest">
+        <PropertyRef Name="usu_document" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__usu_d__7CD98669">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="PreRequest_Observation" Type="Self.PreRequest_Observation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usu_document" />
+      </Principal>
+      <Dependent Role="PreRequest_Observation">
         <PropertyRef Name="usu_document" />
       </Dependent>
     </ReferentialConstraint>
@@ -1169,6 +1203,11 @@
   <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DATA" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="STRPRC_GET_ALL_PRE_REQUEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FILTER" Type="varchar" Mode="In" />
+    <Parameter Name="VALUE" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="STRPRC_GET_REQUEST_BY_FILTER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FILTER" Type="varchar" Mode="In" />
     <Parameter Name="VALUE" Type="varchar" Mode="In" />
@@ -1220,6 +1259,7 @@
     <EntitySet Name="permissionByRole" EntityType="Self.permissionByRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PreClient" EntityType="Self.PreClient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PreRequest" EntityType="Self.PreRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PreRequest_Observation" EntityType="Self.PreRequest_Observation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="probability" EntityType="Self.probability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Regional" EntityType="Self.Regional" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegionalsMain" EntityType="Self.RegionalsMain" Schema="dbo" store:Type="Tables" />
@@ -1362,6 +1402,10 @@
       <End Role="PreClient" EntitySet="PreClient" />
       <End Role="PreRequest" EntitySet="PreRequest" />
     </AssociationSet>
+    <AssociationSet Name="FK__PreReques__preRe__7BE56230" Association="Self.FK__PreReques__preRe__7BE56230">
+      <End Role="PreRequest" EntitySet="PreRequest" />
+      <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
+    </AssociationSet>
     <AssociationSet Name="FK__PreReques__sta_i__01D345B0" Association="Self.FK__PreReques__sta_i__01D345B0">
       <End Role="states" EntitySet="states" />
       <End Role="PreRequest" EntitySet="PreRequest" />
@@ -1369,6 +1413,10 @@
     <AssociationSet Name="FK__PreReques__usu_d__02C769E9" Association="Self.FK__PreReques__usu_d__02C769E9">
       <End Role="users" EntitySet="users" />
       <End Role="PreRequest" EntitySet="PreRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__usu_d__7CD98669" Association="Self.FK__PreReques__usu_d__7CD98669">
+      <End Role="users" EntitySet="users" />
+      <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
     </AssociationSet>
     <AssociationSet Name="FK__PreReques__vehMd__00DF2177" Association="Self.FK__PreReques__vehMd__00DF2177">
       <End Role="VehicleModel" EntitySet="VehicleModel" />

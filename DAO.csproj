@@ -146,6 +146,9 @@
     <Compile Include="PreRequest.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="PreRequest_Observation.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="probability.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
@@ -196,6 +199,12 @@
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="STRPRC_GetFielsdByTemplate_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GET_ALL_PRE_REQUEST_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result.cs">

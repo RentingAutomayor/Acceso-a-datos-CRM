@@ -109,6 +109,9 @@
         <EntityTypeShape EntityType="BDRAModel.TemplateField" Width="1.5" PointX="15.625" PointY="1" />
         <AssociationConnector Association="BDRAModel.FK__TemplateF__tmp_i__589C25F3" />
         <AssociationConnector Association="BDRAModel.PK_request_canal" />
+        <EntityTypeShape EntityType="BDRAModel.PreRequest_Observation" Width="1.5" PointX="18" PointY="13.125" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__preRe__7BE56230" />
+        <AssociationConnector Association="BDRAModel.FK__PreReques__usu_d__7CD98669" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

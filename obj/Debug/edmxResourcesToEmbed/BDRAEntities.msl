@@ -627,5 +627,48 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GET_ALL_PRE_REQUEST" FunctionName="BDRAModel.Store.STRPRC_GET_ALL_PRE_REQUEST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GET_ALL_PRE_REQUEST_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="firstCanal" ColumnName="firstCanal" />
+          <ScalarProperty Name="secondCanal" ColumnName="secondCanal" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE" FunctionName="BDRAModel.Store.STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="firstCanal" ColumnName="firstCanal" />
+          <ScalarProperty Name="secondCanal" ColumnName="secondCanal" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PreRequest_Observation">
+      <EntityTypeMapping TypeName="BDRAModel.PreRequest_Observation">
+        <MappingFragment StoreEntitySet="PreRequest_Observation">
+          <ScalarProperty Name="usu_document" ColumnName="usu_document" />
+          <ScalarProperty Name="prObs_registrationDate" ColumnName="prObs_registrationDate" />
+          <ScalarProperty Name="prObs_observation" ColumnName="prObs_observation" />
+          <ScalarProperty Name="preReq_id" ColumnName="preReq_id" />
+          <ScalarProperty Name="prObs_id" ColumnName="prObs_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

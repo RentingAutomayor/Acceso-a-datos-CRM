@@ -14,6 +14,12 @@ namespace DAO
     
     public partial class PreRequest
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PreRequest()
+        {
+            this.PreRequest_Observation = new HashSet<PreRequest_Observation>();
+        }
+    
         public int preReq_id { get; set; }
         public Nullable<System.DateTime> preReq_registrationDate { get; set; }
         public Nullable<int> preCli_id { get; set; }
@@ -30,5 +36,7 @@ namespace DAO
         public virtual VehicleModel VehicleModel { get; set; }
         public virtual Canal Canal { get; set; }
         public virtual Canal Canal1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PreRequest_Observation> PreRequest_Observation { get; set; }
     }
 }

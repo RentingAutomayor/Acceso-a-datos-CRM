@@ -24,6 +24,7 @@ namespace DAO
             this.userByRol = new HashSet<userByRol>();
             this.PreClient = new HashSet<PreClient>();
             this.PreRequest = new HashSet<PreRequest>();
+            this.PreRequest_Observation = new HashSet<PreRequest_Observation>();
         }
     
         public string usu_document { get; set; }
@@ -57,5 +58,7 @@ namespace DAO
         public virtual ICollection<PreClient> PreClient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreRequest> PreRequest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PreRequest_Observation> PreRequest_Observation { get; set; }
     }
 }

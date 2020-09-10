@@ -72,6 +72,7 @@ namespace DAO
         public virtual DbSet<VehicleModel> VehicleModel { get; set; }
         public virtual DbSet<Template> Template { get; set; }
         public virtual DbSet<TemplateField> TemplateField { get; set; }
+        public virtual DbSet<PreRequest_Observation> PreRequest_Observation { get; set; }
     
         public virtual ObjectResult<RA_SP_GetDataToFile_Result> RA_SP_GetDataToFile()
         {
@@ -178,6 +179,24 @@ namespace DAO
                 new ObjectParameter("VALUE", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GET_REQUEST_BY_FILTER_VALUE_Result>("STRPRC_GET_REQUEST_BY_FILTER_VALUE", fILTERParameter, vALUEParameter);
+        }
+    
+        public virtual ObjectResult<STRPRC_GET_ALL_PRE_REQUEST_Result> STRPRC_GET_ALL_PRE_REQUEST()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GET_ALL_PRE_REQUEST_Result>("STRPRC_GET_ALL_PRE_REQUEST");
+        }
+    
+        public virtual ObjectResult<STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result> STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE(string fILTER, string vALUE)
+        {
+            var fILTERParameter = fILTER != null ?
+                new ObjectParameter("FILTER", fILTER) :
+                new ObjectParameter("FILTER", typeof(string));
+    
+            var vALUEParameter = vALUE != null ?
+                new ObjectParameter("VALUE", vALUE) :
+                new ObjectParameter("VALUE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result>("STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE", fILTERParameter, vALUEParameter);
         }
     }
 }

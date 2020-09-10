@@ -462,6 +462,7 @@
     <NavigationProperty Name="userByRol" Relationship="Self.FK__userByRol__usu_d__0A9D95DB" FromRole="users" ToRole="userByRol" />
     <NavigationProperty Name="PreClient" Relationship="BDRAModel.FK__PreClient__usu_d__793DFFAF" FromRole="users" ToRole="PreClient" />
     <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__usu_d__02C769E9" FromRole="users" ToRole="PreRequest" />
+    <NavigationProperty Name="PreRequest_Observation" Relationship="BDRAModel.FK__PreReques__usu_d__7CD98669" FromRole="users" ToRole="PreRequest_Observation" />
   </EntityType>
   <EntityType Name="VicePresident">
     <Key>
@@ -1345,6 +1346,20 @@
       <End Role="Canal" EntitySet="Canal" />
       <End Role="Request" EntitySet="Request" />
     </AssociationSet>
+    <FunctionImport Name="STRPRC_GET_ALL_PRE_REQUEST" ReturnType="Collection(BDRAModel.STRPRC_GET_ALL_PRE_REQUEST_Result)" />
+    <FunctionImport Name="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE" ReturnType="Collection(BDRAModel.STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result)">
+      <Parameter Name="FILTER" Mode="In" Type="String" />
+      <Parameter Name="VALUE" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PreRequest_Observation" EntityType="BDRAModel.PreRequest_Observation" />
+    <AssociationSet Name="FK__PreReques__preRe__7BE56230" Association="BDRAModel.FK__PreReques__preRe__7BE56230">
+      <End Role="PreRequest" EntitySet="PreRequest" />
+      <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PreReques__usu_d__7CD98669" Association="BDRAModel.FK__PreReques__usu_d__7CD98669">
+      <End Role="users" EntitySet="users" />
+      <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="RA_SP_GetDataToFile_Result">
     <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -1459,6 +1474,7 @@
     <Property Name="secondCanal_id" Type="Int32" />
     <NavigationProperty Name="Canal" Relationship="BDRAModel.FK_FirstCanal_Canal" FromRole="PreRequest" ToRole="Canal" />
     <NavigationProperty Name="Canal1" Relationship="BDRAModel.FK_SecondCanal_Canal" FromRole="PreRequest" ToRole="Canal" />
+    <NavigationProperty Name="PreRequest_Observation" Relationship="BDRAModel.FK__PreReques__preRe__7BE56230" FromRole="PreRequest" ToRole="PreRequest_Observation" />
   </EntityType>
   <EntityType Name="VehicleModel">
     <Key>
@@ -1711,6 +1727,66 @@
       </Principal>
       <Dependent Role="Request">
         <PropertyRef Name="cnl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="STRPRC_GET_ALL_PRE_REQUEST_Result">
+    <Property Type="Int32" Name="code" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cellphone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="vehicleModel" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="firstCanal" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="secondCanal" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result">
+    <Property Type="String" Name="code" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="cellphone" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="vehicleModel" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="firstCanal" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="secondCanal" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="registrationDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="PreRequest_Observation">
+    <Key>
+      <PropertyRef Name="prObs_id" />
+    </Key>
+    <Property Name="prObs_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="preReq_id" Type="Int32" Nullable="false" />
+    <Property Name="prObs_observation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="prObs_registrationDate" Type="DateTime" Precision="3" />
+    <Property Name="usu_document" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PreRequest" Relationship="BDRAModel.FK__PreReques__preRe__7BE56230" FromRole="PreRequest_Observation" ToRole="PreRequest" />
+    <NavigationProperty Name="users" Relationship="BDRAModel.FK__PreReques__usu_d__7CD98669" FromRole="PreRequest_Observation" ToRole="users" />
+  </EntityType>
+  <Association Name="FK__PreReques__preRe__7BE56230">
+    <End Type="BDRAModel.PreRequest" Role="PreRequest" Multiplicity="1" />
+    <End Type="BDRAModel.PreRequest_Observation" Role="PreRequest_Observation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreRequest">
+        <PropertyRef Name="preReq_id" />
+      </Principal>
+      <Dependent Role="PreRequest_Observation">
+        <PropertyRef Name="preReq_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PreReques__usu_d__7CD98669">
+    <End Type="BDRAModel.users" Role="users" Multiplicity="0..1" />
+    <End Type="BDRAModel.PreRequest_Observation" Role="PreRequest_Observation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="usu_document" />
+      </Principal>
+      <Dependent Role="PreRequest_Observation">
+        <PropertyRef Name="usu_document" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
