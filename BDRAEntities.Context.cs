@@ -20,6 +20,7 @@ namespace DAO
         public BDRAEntities()
             : base("name=BDRAEntities")
         {
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 300;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -197,6 +198,16 @@ namespace DAO
                 new ObjectParameter("VALUE", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE_Result>("STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE", fILTERParameter, vALUEParameter);
+        }
+    
+        public virtual ObjectResult<RA_SP_GetDataToExportFile_Result> RA_SP_GetDataToExportFile()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RA_SP_GetDataToExportFile_Result>("RA_SP_GetDataToExportFile");
+        }
+    
+        public virtual ObjectResult<STRPRC_GetDataToExportFile_Result> STRPRC_GetDataToExportFile()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GetDataToExportFile_Result>("STRPRC_GetDataToExportFile");
         }
     }
 }

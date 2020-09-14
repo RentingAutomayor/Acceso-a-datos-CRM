@@ -1360,6 +1360,8 @@
       <End Role="users" EntitySet="users" />
       <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
     </AssociationSet>
+    <FunctionImport Name="RA_SP_GetDataToExportFile" ReturnType="Collection(BDRAModel.RA_SP_GetDataToExportFile_Result)" />
+    <FunctionImport Name="STRPRC_GetDataToExportFile" ReturnType="Collection(BDRAModel.STRPRC_GetDataToExportFile_Result)" />
   </EntityContainer>
   <ComplexType Name="RA_SP_GetDataToFile_Result">
     <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -1790,4 +1792,94 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="RA_SP_GetDataToExportFile_Result">
+    <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="Canal" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="GerenteRenting" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="VP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Banca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Regional" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CNE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CCBanco" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="GerenteBanco" Nullable="true" MaxLength="301" />
+    <Property Type="String" Name="DepartamentoEmpresa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CiudadEmpresa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DaneEmpresa" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ContactoEmpresa" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="Cargo" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="Celular" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ActividadEconomica" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="CodigoActEconomica" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="FechaVisita" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FechaUltimaVisita" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EstadoPrincipal" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstadoSecundario" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TercerEstado" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Probabilidad" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DecisionRiesgo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaRadicacionRiesgo" Nullable="true" MaxLength="20" />
+    <Property Type="Int64" Name="MontoAprobado" Nullable="true" />
+    <Property Type="Int16" Name="VehiculosEntregados" Nullable="true" />
+    <Property Type="Int64" Name="MontoActivosEntregados" Nullable="true" />
+    <Property Type="String" Name="FechaLegalizacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FechaEntrega" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioCreacionRegistro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioActualizacionRegistro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaActualización" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="STRPRC_GetDataToExportFile_Result">
+    <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="Canal" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="GerenteRenting" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="VP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Banca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Regional" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CNE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CCBanco" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="GerenteBanco" Nullable="true" MaxLength="301" />
+    <Property Type="String" Name="DepartamentoEmpresa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CiudadEmpresa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DaneEmpresa" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ContactoEmpresa" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="Cargo" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="Celular" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ActividadEconomica" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="CodigoActEconomica" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="FechaVisita" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FechaUltimaVisita" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EstadoPrincipal" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstadoSecundario" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TercerEstado" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Probabilidad" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DecisionRiesgo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaRadicacionRiesgo" Nullable="true" MaxLength="20" />
+    <Property Type="Int64" Name="MontoAprobado" Nullable="true" />
+    <Property Type="Int16" Name="VehiculosEntregados" Nullable="true" />
+    <Property Type="Int64" Name="MontoActivosEntregados" Nullable="true" />
+    <Property Type="String" Name="FechaLegalizacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FechaEntrega" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioCreacionRegistro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioActualizacionRegistro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaActualizacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
+  </ComplexType>
 </Schema>

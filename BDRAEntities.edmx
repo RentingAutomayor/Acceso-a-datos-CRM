@@ -1204,7 +1204,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="RA_SP_GetDataToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RA_SP_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DATA" Type="varchar" Mode="In" />
         </Function>
@@ -1224,6 +1224,7 @@
         <Function Name="STRPRC_GetConfigTemplateByPrefix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prefix" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="STRPRC_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="STRPRC_GetFielsdByTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_TEMPLATE" Type="int" Mode="In" />
         </Function>
@@ -2892,6 +2893,8 @@
             <End Role="users" EntitySet="users" />
             <End Role="PreRequest_Observation" EntitySet="PreRequest_Observation" />
           </AssociationSet>
+          <FunctionImport Name="RA_SP_GetDataToExportFile" ReturnType="Collection(BDRAModel.RA_SP_GetDataToExportFile_Result)" />
+          <FunctionImport Name="STRPRC_GetDataToExportFile" ReturnType="Collection(BDRAModel.STRPRC_GetDataToExportFile_Result)" />
         </EntityContainer>
         <ComplexType Name="RA_SP_GetDataToFile_Result">
           <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -3322,6 +3325,96 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="RA_SP_GetDataToExportFile_Result">
+          <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Canal" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="GerenteRenting" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="VP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Banca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Regional" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CNE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CCBanco" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="GerenteBanco" Nullable="true" MaxLength="301" />
+          <Property Type="String" Name="DepartamentoEmpresa" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CiudadEmpresa" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DaneEmpresa" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ContactoEmpresa" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Celular" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ActividadEconomica" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CodigoActEconomica" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="FechaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaUltimaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EstadoPrincipal" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EstadoSecundario" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TercerEstado" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Probabilidad" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DecisionRiesgo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaRadicacionRiesgo" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="MontoAprobado" Nullable="true" />
+          <Property Type="Int16" Name="VehiculosEntregados" Nullable="true" />
+          <Property Type="Int64" Name="MontoActivosEntregados" Nullable="true" />
+          <Property Type="String" Name="FechaLegalizacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaEntrega" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioCreacionRegistro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRegistro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaActualización" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="STRPRC_GetDataToExportFile_Result">
+          <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Canal" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="GerenteRenting" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="VP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Banca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Regional" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CNE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CCBanco" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="GerenteBanco" Nullable="true" MaxLength="301" />
+          <Property Type="String" Name="DepartamentoEmpresa" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CiudadEmpresa" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DaneEmpresa" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ContactoEmpresa" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Celular" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ActividadEconomica" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CodigoActEconomica" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="FechaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaUltimaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EstadoPrincipal" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EstadoSecundario" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TercerEstado" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Probabilidad" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DecisionRiesgo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaRadicacionRiesgo" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="MontoAprobado" Nullable="true" />
+          <Property Type="Int16" Name="VehiculosEntregados" Nullable="true" />
+          <Property Type="Int64" Name="MontoActivosEntregados" Nullable="true" />
+          <Property Type="String" Name="FechaLegalizacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaEntrega" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioCreacionRegistro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRegistro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaActualizacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3744,54 +3837,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="RA_SP_GetDataToFile" FunctionName="BDRAModel.Store.RA_SP_GetDataToFile">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BDRAModel.RA_SP_GetDataToFile_Result">
-                <ScalarProperty Name="NIT" ColumnName="NIT" />
-                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
-                <ScalarProperty Name="Canal" ColumnName="Canal" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="Gerente_Renting" ColumnName="Gerente Renting" />
-                <ScalarProperty Name="VP" ColumnName="VP" />
-                <ScalarProperty Name="Banca" ColumnName="Banca" />
-                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
-                <ScalarProperty Name="Regional" ColumnName="Regional" />
-                <ScalarProperty Name="CNE_Zona" ColumnName="CNE/Zona" />
-                <ScalarProperty Name="CC_Banco" ColumnName="CC Banco" />
-                <ScalarProperty Name="Gerente_a_cargo_banco" ColumnName="Gerente a cargo banco" />
-                <ScalarProperty Name="Departamento_Empresa" ColumnName="Departamento Empresa" />
-                <ScalarProperty Name="Ciudad_Empresa" ColumnName="Ciudad Empresa" />
-                <ScalarProperty Name="Dane_empresa" ColumnName="Dane empresa" />
-                <ScalarProperty Name="Contacto_Empresa" ColumnName="Contacto Empresa" />
-                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Actividad_económica" ColumnName="Actividad económica" />
-                <ScalarProperty Name="Código_Act_Económica" ColumnName="Código Act Económica" />
-                <ScalarProperty Name="Fecha_Visita" ColumnName="Fecha Visita" />
-                <ScalarProperty Name="Fecha_Última_Visita" ColumnName="Fecha Última Visita" />
-                <ScalarProperty Name="Estado_Principal" ColumnName="Estado Principal" />
-                <ScalarProperty Name="Estado_Secundario" ColumnName="Estado Secundario" />
-                <ScalarProperty Name="Tercer_Estado" ColumnName="Tercer Estado" />
-                <ScalarProperty Name="Probabilidad" ColumnName="Probabilidad" />
-                <ScalarProperty Name="Decision_Riesgo" ColumnName="Decision Riesgo" />
-                <ScalarProperty Name="Fecha_de_radicacion_Riesgo" ColumnName="Fecha de radicacion Riesgo" />
-                <ScalarProperty Name="Monto_Aprobado" ColumnName="Monto Aprobado" />
-                <ScalarProperty Name="C__Vehiculos_Entregados" ColumnName="# Vehiculos Entregados" />
-                <ScalarProperty Name="Monto_Activos_Entregados" ColumnName="Monto Activos Entregados" />
-                <ScalarProperty Name="Fecha_de_legalización" ColumnName="Fecha de legalización" />
-                <ScalarProperty Name="Fecha_de_entrega" ColumnName="Fecha de entrega" />
-                <ScalarProperty Name="Usuario_Creación_Registro" ColumnName="Usuario Creación Registro" />
-                <ScalarProperty Name="Fecha_creación" ColumnName="Fecha creación" />
-                <ScalarProperty Name="Usuario_Actualización_Registro" ColumnName="Usuario Actualización Registro" />
-                <ScalarProperty Name="Fecha_Actualización" ColumnName="Fecha Actualización" />
-                <ScalarProperty Name="Usuario_Actualización_RiesgoOP" ColumnName="Usuario Actualización RiesgoOP" />
-                <ScalarProperty Name="Fecha_Actualización_Riesgo_OP" ColumnName="Fecha Actualización Riesgo OP" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="VP">
             <EntityTypeMapping TypeName="BDRAModel.VP">
               <MappingFragment StoreEntitySet="VP">
@@ -3997,6 +4042,104 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RA_SP_GetDataToExportFile" FunctionName="BDRAModel.Store.RA_SP_GetDataToExportFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDRAModel.RA_SP_GetDataToExportFile_Result">
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Canal" ColumnName="Canal" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="GerenteRenting" ColumnName="GerenteRenting" />
+                <ScalarProperty Name="VP" ColumnName="VP" />
+                <ScalarProperty Name="Banca" ColumnName="Banca" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="Regional" ColumnName="Regional" />
+                <ScalarProperty Name="CNE" ColumnName="CNE" />
+                <ScalarProperty Name="CCBanco" ColumnName="CCBanco" />
+                <ScalarProperty Name="GerenteBanco" ColumnName="GerenteBanco" />
+                <ScalarProperty Name="DepartamentoEmpresa" ColumnName="DepartamentoEmpresa" />
+                <ScalarProperty Name="CiudadEmpresa" ColumnName="CiudadEmpresa" />
+                <ScalarProperty Name="DaneEmpresa" ColumnName="DaneEmpresa" />
+                <ScalarProperty Name="ContactoEmpresa" ColumnName="ContactoEmpresa" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="ActividadEconomica" ColumnName="ActividadEconomica" />
+                <ScalarProperty Name="CodigoActEconomica" ColumnName="CodigoActEconomica" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+                <ScalarProperty Name="FechaUltimaVisita" ColumnName="FechaUltimaVisita" />
+                <ScalarProperty Name="EstadoPrincipal" ColumnName="EstadoPrincipal" />
+                <ScalarProperty Name="EstadoSecundario" ColumnName="EstadoSecundario" />
+                <ScalarProperty Name="TercerEstado" ColumnName="TercerEstado" />
+                <ScalarProperty Name="Probabilidad" ColumnName="Probabilidad" />
+                <ScalarProperty Name="DecisionRiesgo" ColumnName="DecisionRiesgo" />
+                <ScalarProperty Name="FechaRadicacionRiesgo" ColumnName="FechaRadicacionRiesgo" />
+                <ScalarProperty Name="MontoAprobado" ColumnName="MontoAprobado" />
+                <ScalarProperty Name="VehiculosEntregados" ColumnName="VehiculosEntregados" />
+                <ScalarProperty Name="MontoActivosEntregados" ColumnName="MontoActivosEntregados" />
+                <ScalarProperty Name="FechaLegalizacion" ColumnName="FechaLegalizacion" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="UsuarioCreacionRegistro" ColumnName="UsuarioCreacionRegistro" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacionRegistro" ColumnName="UsuarioActualizacionRegistro" />
+                <ScalarProperty Name="FechaActualización" ColumnName="FechaActualización" />
+                <ScalarProperty Name="UsuarioActualizacionRiesgoOP" ColumnName="UsuarioActualizacionRiesgoOP" />
+                <ScalarProperty Name="FechaActualizacionRiesgoOP" ColumnName="FechaActualizacionRiesgoOP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STRPRC_GetDataToExportFile" FunctionName="BDRAModel.Store.STRPRC_GetDataToExportFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GetDataToExportFile_Result">
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Canal" ColumnName="Canal" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="GerenteRenting" ColumnName="GerenteRenting" />
+                <ScalarProperty Name="VP" ColumnName="VP" />
+                <ScalarProperty Name="Banca" ColumnName="Banca" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="Regional" ColumnName="Regional" />
+                <ScalarProperty Name="CNE" ColumnName="CNE" />
+                <ScalarProperty Name="CCBanco" ColumnName="CCBanco" />
+                <ScalarProperty Name="GerenteBanco" ColumnName="GerenteBanco" />
+                <ScalarProperty Name="DepartamentoEmpresa" ColumnName="DepartamentoEmpresa" />
+                <ScalarProperty Name="CiudadEmpresa" ColumnName="CiudadEmpresa" />
+                <ScalarProperty Name="DaneEmpresa" ColumnName="DaneEmpresa" />
+                <ScalarProperty Name="ContactoEmpresa" ColumnName="ContactoEmpresa" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="ActividadEconomica" ColumnName="ActividadEconomica" />
+                <ScalarProperty Name="CodigoActEconomica" ColumnName="CodigoActEconomica" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+                <ScalarProperty Name="FechaUltimaVisita" ColumnName="FechaUltimaVisita" />
+                <ScalarProperty Name="EstadoPrincipal" ColumnName="EstadoPrincipal" />
+                <ScalarProperty Name="EstadoSecundario" ColumnName="EstadoSecundario" />
+                <ScalarProperty Name="TercerEstado" ColumnName="TercerEstado" />
+                <ScalarProperty Name="Probabilidad" ColumnName="Probabilidad" />
+                <ScalarProperty Name="DecisionRiesgo" ColumnName="DecisionRiesgo" />
+                <ScalarProperty Name="FechaRadicacionRiesgo" ColumnName="FechaRadicacionRiesgo" />
+                <ScalarProperty Name="MontoAprobado" ColumnName="MontoAprobado" />
+                <ScalarProperty Name="VehiculosEntregados" ColumnName="VehiculosEntregados" />
+                <ScalarProperty Name="MontoActivosEntregados" ColumnName="MontoActivosEntregados" />
+                <ScalarProperty Name="FechaLegalizacion" ColumnName="FechaLegalizacion" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="UsuarioCreacionRegistro" ColumnName="UsuarioCreacionRegistro" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacionRegistro" ColumnName="UsuarioActualizacionRegistro" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="UsuarioActualizacionRiesgoOP" ColumnName="UsuarioActualizacionRiesgoOP" />
+                <ScalarProperty Name="FechaActualizacionRiesgoOP" ColumnName="FechaActualizacionRiesgoOP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

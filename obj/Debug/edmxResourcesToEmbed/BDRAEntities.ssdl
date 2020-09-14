@@ -1199,7 +1199,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="RA_SP_GetDataToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RA_SP_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DATA" Type="varchar" Mode="In" />
   </Function>
@@ -1219,6 +1219,7 @@
   <Function Name="STRPRC_GetConfigTemplateByPrefix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="prefix" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="STRPRC_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="STRPRC_GetFielsdByTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_TEMPLATE" Type="int" Mode="In" />
   </Function>

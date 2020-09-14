@@ -153,6 +153,9 @@
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RA_SP_GetDataToExportFile_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="RA_SP_GetDataToFile_Result.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
@@ -196,6 +199,9 @@
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="STRPRC_GetConfigTemplateByPrefix_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STRPRC_GetDataToExportFile_Result.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="STRPRC_GetFielsdByTemplate_Result.cs">
