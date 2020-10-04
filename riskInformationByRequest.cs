@@ -24,6 +24,7 @@ namespace DAO
         public Nullable<System.DateTime> ribr_dateFiling { get; set; }
         public Nullable<System.DateTime> ribr_dateUpdateRow { get; set; }
         public string usu_document { get; set; }
+        public Nullable<System.DateTime> ribr_dateApproved { get; set; }
     
         public virtual Request Request { get; set; }
         public virtual states states { get; set; }

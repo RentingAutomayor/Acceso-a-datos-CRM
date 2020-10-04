@@ -33,6 +33,7 @@ namespace DAO
         public string cnt_costCenter { get; set; }
         public Nullable<int> cty_id { get; set; }
         public Nullable<System.DateTime> cnt_registrationDate { get; set; }
+        public Nullable<bool> cnt_state { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<additionalInformationByContact> additionalInformationByContact { get; set; }

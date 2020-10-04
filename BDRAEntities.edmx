@@ -129,6 +129,7 @@
           <Property Name="cnt_costCenter" Type="varchar" MaxLength="10" />
           <Property Name="cty_id" Type="int" />
           <Property Name="cnt_registrationDate" Type="datetime" />
+          <Property Name="cnt_state" Type="bit" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -356,6 +357,7 @@
           <Property Name="ribr_dateFiling" Type="datetime" />
           <Property Name="ribr_dateUpdateRow" Type="datetime" />
           <Property Name="usu_document" Type="varchar" MaxLength="30" />
+          <Property Name="ribr_dateApproved" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -1208,6 +1210,21 @@
         <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DATA" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="STRPRC_Create_New_Contact_Bank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COSTCENTER" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="KIND_OD_BANK" Type="varchar" Mode="In" />
+          <Parameter Name="REGIONAL" Type="varchar" Mode="In" />
+          <Parameter Name="CNE" Type="varchar" Mode="In" />
+          <Parameter Name="SEGMENT" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="VICE_REGIONAL" Type="varchar" Mode="In" />
+          <Parameter Name="REGIONAL_MAIN" Type="varchar" Mode="In" />
+          <Parameter Name="VICE_PRESIDENT" Type="varchar" Mode="In" />
+          <Parameter Name="CASH_ESPECIALIST" Type="varchar" Mode="In" />
+          <Parameter Name="CODE_ESPECIALIST" Type="varchar" Mode="In" />
+          <Parameter Name="ZONAL" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="STRPRC_GET_ALL_PRE_REQUEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FILTER" Type="varchar" Mode="In" />
@@ -1224,6 +1241,7 @@
         <Function Name="STRPRC_GetConfigTemplateByPrefix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prefix" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="STRPRC_GetData_To_ExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="STRPRC_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="STRPRC_GetFielsdByTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_TEMPLATE" Type="int" Mode="In" />
@@ -1687,6 +1705,7 @@
           <NavigationProperty Name="Cities" Relationship="Self.FK__Contact__cty_id__76969D2E" FromRole="Contact" ToRole="Cities" />
           <NavigationProperty Name="JobTitlesClient" Relationship="Self.FK__Contact__jtcl_id__778AC167" FromRole="Contact" ToRole="JobTitlesClient" />
           <NavigationProperty Name="Request" Relationship="Self.FK_request_contact" FromRole="Contact" ToRole="Request" />
+          <Property Name="cnt_state" Type="Boolean" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -1911,6 +1930,7 @@
           <NavigationProperty Name="Request" Relationship="Self.FK__riskInfor__rqt_i__05D8E0BE" FromRole="riskInformationByRequest" ToRole="Request" />
           <NavigationProperty Name="states" Relationship="Self.FK__riskInfor__sta_i__06CD04F7" FromRole="riskInformationByRequest" ToRole="states" />
           <NavigationProperty Name="users" Relationship="Self.FK_riskinformationByrequest_users" FromRole="riskInformationByRequest" ToRole="users" />
+          <Property Name="ribr_dateApproved" Type="DateTime" Precision="7" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -2895,6 +2915,22 @@
           </AssociationSet>
           <FunctionImport Name="RA_SP_GetDataToExportFile" ReturnType="Collection(BDRAModel.RA_SP_GetDataToExportFile_Result)" />
           <FunctionImport Name="STRPRC_GetDataToExportFile" ReturnType="Collection(BDRAModel.STRPRC_GetDataToExportFile_Result)" />
+          <FunctionImport Name="STRPRC_GetData_To_ExportFile" ReturnType="Collection(BDRAModel.STRPRC_GetData_To_ExportFile_Result)" />
+          <FunctionImport Name="STRPRC_Create_New_Contact_Bank">
+            <Parameter Name="COSTCENTER" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_NAME" Mode="In" Type="String" />
+            <Parameter Name="KIND_OD_BANK" Mode="In" Type="String" />
+            <Parameter Name="REGIONAL" Mode="In" Type="String" />
+            <Parameter Name="CNE" Mode="In" Type="String" />
+            <Parameter Name="SEGMENT" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="VICE_REGIONAL" Mode="In" Type="String" />
+            <Parameter Name="REGIONAL_MAIN" Mode="In" Type="String" />
+            <Parameter Name="VICE_PRESIDENT" Mode="In" Type="String" />
+            <Parameter Name="CASH_ESPECIALIST" Mode="In" Type="String" />
+            <Parameter Name="CODE_ESPECIALIST" Mode="In" Type="String" />
+            <Parameter Name="ZONAL" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RA_SP_GetDataToFile_Result">
           <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
@@ -3415,6 +3451,52 @@
           <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="STRPRC_GetData_To_ExportFile_Result">
+          <Property Type="String" Name="NIT" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Canal" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="201" />
+          <Property Type="String" Name="GerenteRenting" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="VP" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Banca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Segmento" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Regional" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CNE" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CCBanco" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="GerenteBanco" Nullable="false" MaxLength="301" />
+          <Property Type="String" Name="DepartamentoEmpresa" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CiudadEmpresa" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DaneEmpresa" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ContactoEmpresa" Nullable="false" MaxLength="201" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Celular" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Direccion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ActividadEconomica" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="CodigoActEconomica" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Observaciones" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="FechaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaUltimaVisita" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EstadoPrincipal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EstadoSecundario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TercerEstado" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Probabilidad" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="DecisionRiesgo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FechaRadicacionRiesgo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaAprobacion" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="MontoAprobado" Nullable="false" />
+          <Property Type="Int16" Name="VehiculosEntregados" Nullable="false" />
+          <Property Type="Int64" Name="MontoActivosEntregados" Nullable="false" />
+          <Property Type="String" Name="FechaLegalizacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FechaEntrega" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioCreacionRegistro" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRegistro" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FechaActualizacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioActualizacionRiesgoOP" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FechaActualizacionRiesgoOP" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3533,6 +3615,7 @@
           <EntitySetMapping Name="Contact">
             <EntityTypeMapping TypeName="BDRAModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="cnt_state" ColumnName="cnt_state" />
                 <ScalarProperty Name="cnt_id" ColumnName="cnt_id" />
                 <ScalarProperty Name="bra_id" ColumnName="bra_id" />
                 <ScalarProperty Name="cnt_name" ColumnName="cnt_name" />
@@ -3741,6 +3824,7 @@
           <EntitySetMapping Name="riskInformationByRequest">
             <EntityTypeMapping TypeName="BDRAModel.riskInformationByRequest">
               <MappingFragment StoreEntitySet="riskInformationByRequest">
+                <ScalarProperty Name="ribr_dateApproved" ColumnName="ribr_dateApproved" />
                 <ScalarProperty Name="ribr_id" ColumnName="ribr_id" />
                 <ScalarProperty Name="rqt_id" ColumnName="rqt_id" />
                 <ScalarProperty Name="ribr_dateSubmissionAnalysis" ColumnName="ribr_dateSubmissionAnalysis" />
@@ -4140,6 +4224,57 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STRPRC_GetData_To_ExportFile" FunctionName="BDRAModel.Store.STRPRC_GetData_To_ExportFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GetData_To_ExportFile_Result">
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Canal" ColumnName="Canal" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="GerenteRenting" ColumnName="GerenteRenting" />
+                <ScalarProperty Name="VP" ColumnName="VP" />
+                <ScalarProperty Name="Banca" ColumnName="Banca" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="Regional" ColumnName="Regional" />
+                <ScalarProperty Name="CNE" ColumnName="CNE" />
+                <ScalarProperty Name="CCBanco" ColumnName="CCBanco" />
+                <ScalarProperty Name="GerenteBanco" ColumnName="GerenteBanco" />
+                <ScalarProperty Name="DepartamentoEmpresa" ColumnName="DepartamentoEmpresa" />
+                <ScalarProperty Name="CiudadEmpresa" ColumnName="CiudadEmpresa" />
+                <ScalarProperty Name="DaneEmpresa" ColumnName="DaneEmpresa" />
+                <ScalarProperty Name="ContactoEmpresa" ColumnName="ContactoEmpresa" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="ActividadEconomica" ColumnName="ActividadEconomica" />
+                <ScalarProperty Name="CodigoActEconomica" ColumnName="CodigoActEconomica" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+                <ScalarProperty Name="FechaUltimaVisita" ColumnName="FechaUltimaVisita" />
+                <ScalarProperty Name="EstadoPrincipal" ColumnName="EstadoPrincipal" />
+                <ScalarProperty Name="EstadoSecundario" ColumnName="EstadoSecundario" />
+                <ScalarProperty Name="TercerEstado" ColumnName="TercerEstado" />
+                <ScalarProperty Name="Probabilidad" ColumnName="Probabilidad" />
+                <ScalarProperty Name="DecisionRiesgo" ColumnName="DecisionRiesgo" />
+                <ScalarProperty Name="FechaRadicacionRiesgo" ColumnName="FechaRadicacionRiesgo" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="MontoAprobado" ColumnName="MontoAprobado" />
+                <ScalarProperty Name="VehiculosEntregados" ColumnName="VehiculosEntregados" />
+                <ScalarProperty Name="MontoActivosEntregados" ColumnName="MontoActivosEntregados" />
+                <ScalarProperty Name="FechaLegalizacion" ColumnName="FechaLegalizacion" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="UsuarioCreacionRegistro" ColumnName="UsuarioCreacionRegistro" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacionRegistro" ColumnName="UsuarioActualizacionRegistro" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="UsuarioActualizacionRiesgoOP" ColumnName="UsuarioActualizacionRiesgoOP" />
+                <ScalarProperty Name="FechaActualizacionRiesgoOP" ColumnName="FechaActualizacionRiesgoOP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="STRPRC_Create_New_Contact_Bank" FunctionName="BDRAModel.Store.STRPRC_Create_New_Contact_Bank" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

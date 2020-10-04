@@ -124,6 +124,7 @@
     <Property Name="cnt_costCenter" Type="varchar" MaxLength="10" />
     <Property Name="cty_id" Type="int" />
     <Property Name="cnt_registrationDate" Type="datetime" />
+    <Property Name="cnt_state" Type="bit" />
   </EntityType>
   <EntityType Name="Countries">
     <Key>
@@ -351,6 +352,7 @@
     <Property Name="ribr_dateFiling" Type="datetime" />
     <Property Name="ribr_dateUpdateRow" Type="datetime" />
     <Property Name="usu_document" Type="varchar" MaxLength="30" />
+    <Property Name="ribr_dateApproved" Type="datetime2" Precision="7" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
@@ -1203,6 +1205,21 @@
   <Function Name="SP_GET_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DATA" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="STRPRC_Create_New_Contact_Bank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COSTCENTER" Type="varchar" Mode="In" />
+    <Parameter Name="CONTACT_NAME" Type="varchar" Mode="In" />
+    <Parameter Name="KIND_OD_BANK" Type="varchar" Mode="In" />
+    <Parameter Name="REGIONAL" Type="varchar" Mode="In" />
+    <Parameter Name="CNE" Type="varchar" Mode="In" />
+    <Parameter Name="SEGMENT" Type="varchar" Mode="In" />
+    <Parameter Name="CITY" Type="varchar" Mode="In" />
+    <Parameter Name="VICE_REGIONAL" Type="varchar" Mode="In" />
+    <Parameter Name="REGIONAL_MAIN" Type="varchar" Mode="In" />
+    <Parameter Name="VICE_PRESIDENT" Type="varchar" Mode="In" />
+    <Parameter Name="CASH_ESPECIALIST" Type="varchar" Mode="In" />
+    <Parameter Name="CODE_ESPECIALIST" Type="varchar" Mode="In" />
+    <Parameter Name="ZONAL" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="STRPRC_GET_ALL_PRE_REQUEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="STRPRC_GET_PRE_REQUEST_BY_FILTER_VALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FILTER" Type="varchar" Mode="In" />
@@ -1219,6 +1236,7 @@
   <Function Name="STRPRC_GetConfigTemplateByPrefix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="prefix" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="STRPRC_GetData_To_ExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="STRPRC_GetDataToExportFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="STRPRC_GetFielsdByTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_TEMPLATE" Type="int" Mode="In" />

@@ -20,7 +20,6 @@ namespace DAO
         public BDRAEntities()
             : base("name=BDRAEntities")
         {
-            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 300;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -208,6 +207,68 @@ namespace DAO
         public virtual ObjectResult<STRPRC_GetDataToExportFile_Result> STRPRC_GetDataToExportFile()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GetDataToExportFile_Result>("STRPRC_GetDataToExportFile");
+        }
+    
+        public virtual ObjectResult<STRPRC_GetData_To_ExportFile_Result> STRPRC_GetData_To_ExportFile()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STRPRC_GetData_To_ExportFile_Result>("STRPRC_GetData_To_ExportFile");
+        }
+    
+        public virtual int STRPRC_Create_New_Contact_Bank(string cOSTCENTER, string cONTACT_NAME, string kIND_OD_BANK, string rEGIONAL, string cNE, string sEGMENT, string cITY, string vICE_REGIONAL, string rEGIONAL_MAIN, string vICE_PRESIDENT, string cASH_ESPECIALIST, string cODE_ESPECIALIST, string zONAL)
+        {
+            var cOSTCENTERParameter = cOSTCENTER != null ?
+                new ObjectParameter("COSTCENTER", cOSTCENTER) :
+                new ObjectParameter("COSTCENTER", typeof(string));
+    
+            var cONTACT_NAMEParameter = cONTACT_NAME != null ?
+                new ObjectParameter("CONTACT_NAME", cONTACT_NAME) :
+                new ObjectParameter("CONTACT_NAME", typeof(string));
+    
+            var kIND_OD_BANKParameter = kIND_OD_BANK != null ?
+                new ObjectParameter("KIND_OD_BANK", kIND_OD_BANK) :
+                new ObjectParameter("KIND_OD_BANK", typeof(string));
+    
+            var rEGIONALParameter = rEGIONAL != null ?
+                new ObjectParameter("REGIONAL", rEGIONAL) :
+                new ObjectParameter("REGIONAL", typeof(string));
+    
+            var cNEParameter = cNE != null ?
+                new ObjectParameter("CNE", cNE) :
+                new ObjectParameter("CNE", typeof(string));
+    
+            var sEGMENTParameter = sEGMENT != null ?
+                new ObjectParameter("SEGMENT", sEGMENT) :
+                new ObjectParameter("SEGMENT", typeof(string));
+    
+            var cITYParameter = cITY != null ?
+                new ObjectParameter("CITY", cITY) :
+                new ObjectParameter("CITY", typeof(string));
+    
+            var vICE_REGIONALParameter = vICE_REGIONAL != null ?
+                new ObjectParameter("VICE_REGIONAL", vICE_REGIONAL) :
+                new ObjectParameter("VICE_REGIONAL", typeof(string));
+    
+            var rEGIONAL_MAINParameter = rEGIONAL_MAIN != null ?
+                new ObjectParameter("REGIONAL_MAIN", rEGIONAL_MAIN) :
+                new ObjectParameter("REGIONAL_MAIN", typeof(string));
+    
+            var vICE_PRESIDENTParameter = vICE_PRESIDENT != null ?
+                new ObjectParameter("VICE_PRESIDENT", vICE_PRESIDENT) :
+                new ObjectParameter("VICE_PRESIDENT", typeof(string));
+    
+            var cASH_ESPECIALISTParameter = cASH_ESPECIALIST != null ?
+                new ObjectParameter("CASH_ESPECIALIST", cASH_ESPECIALIST) :
+                new ObjectParameter("CASH_ESPECIALIST", typeof(string));
+    
+            var cODE_ESPECIALISTParameter = cODE_ESPECIALIST != null ?
+                new ObjectParameter("CODE_ESPECIALIST", cODE_ESPECIALIST) :
+                new ObjectParameter("CODE_ESPECIALIST", typeof(string));
+    
+            var zONALParameter = zONAL != null ?
+                new ObjectParameter("ZONAL", zONAL) :
+                new ObjectParameter("ZONAL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STRPRC_Create_New_Contact_Bank", cOSTCENTERParameter, cONTACT_NAMEParameter, kIND_OD_BANKParameter, rEGIONALParameter, cNEParameter, sEGMENTParameter, cITYParameter, vICE_REGIONALParameter, rEGIONAL_MAINParameter, vICE_PRESIDENTParameter, cASH_ESPECIALISTParameter, cODE_ESPECIALISTParameter, zONALParameter);
         }
     }
 }

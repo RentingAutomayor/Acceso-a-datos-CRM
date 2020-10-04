@@ -113,6 +113,7 @@
     <EntitySetMapping Name="Contact">
       <EntityTypeMapping TypeName="BDRAModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="cnt_state" ColumnName="cnt_state" />
           <ScalarProperty Name="cnt_id" ColumnName="cnt_id" />
           <ScalarProperty Name="bra_id" ColumnName="bra_id" />
           <ScalarProperty Name="cnt_name" ColumnName="cnt_name" />
@@ -321,6 +322,7 @@
     <EntitySetMapping Name="riskInformationByRequest">
       <EntityTypeMapping TypeName="BDRAModel.riskInformationByRequest">
         <MappingFragment StoreEntitySet="riskInformationByRequest">
+          <ScalarProperty Name="ribr_dateApproved" ColumnName="ribr_dateApproved" />
           <ScalarProperty Name="ribr_id" ColumnName="ribr_id" />
           <ScalarProperty Name="rqt_id" ColumnName="rqt_id" />
           <ScalarProperty Name="ribr_dateSubmissionAnalysis" ColumnName="ribr_dateSubmissionAnalysis" />
@@ -720,5 +722,56 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_GetData_To_ExportFile" FunctionName="BDRAModel.Store.STRPRC_GetData_To_ExportFile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRAModel.STRPRC_GetData_To_ExportFile_Result">
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="Canal" ColumnName="Canal" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="GerenteRenting" ColumnName="GerenteRenting" />
+          <ScalarProperty Name="VP" ColumnName="VP" />
+          <ScalarProperty Name="Banca" ColumnName="Banca" />
+          <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+          <ScalarProperty Name="Regional" ColumnName="Regional" />
+          <ScalarProperty Name="CNE" ColumnName="CNE" />
+          <ScalarProperty Name="CCBanco" ColumnName="CCBanco" />
+          <ScalarProperty Name="GerenteBanco" ColumnName="GerenteBanco" />
+          <ScalarProperty Name="DepartamentoEmpresa" ColumnName="DepartamentoEmpresa" />
+          <ScalarProperty Name="CiudadEmpresa" ColumnName="CiudadEmpresa" />
+          <ScalarProperty Name="DaneEmpresa" ColumnName="DaneEmpresa" />
+          <ScalarProperty Name="ContactoEmpresa" ColumnName="ContactoEmpresa" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="ActividadEconomica" ColumnName="ActividadEconomica" />
+          <ScalarProperty Name="CodigoActEconomica" ColumnName="CodigoActEconomica" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+          <ScalarProperty Name="FechaUltimaVisita" ColumnName="FechaUltimaVisita" />
+          <ScalarProperty Name="EstadoPrincipal" ColumnName="EstadoPrincipal" />
+          <ScalarProperty Name="EstadoSecundario" ColumnName="EstadoSecundario" />
+          <ScalarProperty Name="TercerEstado" ColumnName="TercerEstado" />
+          <ScalarProperty Name="Probabilidad" ColumnName="Probabilidad" />
+          <ScalarProperty Name="DecisionRiesgo" ColumnName="DecisionRiesgo" />
+          <ScalarProperty Name="FechaRadicacionRiesgo" ColumnName="FechaRadicacionRiesgo" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="MontoAprobado" ColumnName="MontoAprobado" />
+          <ScalarProperty Name="VehiculosEntregados" ColumnName="VehiculosEntregados" />
+          <ScalarProperty Name="MontoActivosEntregados" ColumnName="MontoActivosEntregados" />
+          <ScalarProperty Name="FechaLegalizacion" ColumnName="FechaLegalizacion" />
+          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+          <ScalarProperty Name="UsuarioCreacionRegistro" ColumnName="UsuarioCreacionRegistro" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioActualizacionRegistro" ColumnName="UsuarioActualizacionRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacionRiesgoOP" ColumnName="UsuarioActualizacionRiesgoOP" />
+          <ScalarProperty Name="FechaActualizacionRiesgoOP" ColumnName="FechaActualizacionRiesgoOP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STRPRC_Create_New_Contact_Bank" FunctionName="BDRAModel.Store.STRPRC_Create_New_Contact_Bank" />
   </EntityContainerMapping>
 </Mapping>

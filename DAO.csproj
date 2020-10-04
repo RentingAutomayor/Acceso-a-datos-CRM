@@ -204,6 +204,9 @@
     <Compile Include="STRPRC_GetDataToExportFile_Result.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="STRPRC_GetData_To_ExportFile_Result.cs">
+      <DependentUpon>BDRAEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="STRPRC_GetFielsdByTemplate_Result.cs">
       <DependentUpon>BDRAEntities.tt</DependentUpon>
     </Compile>
